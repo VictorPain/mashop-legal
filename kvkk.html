@@ -1,1 +1,93 @@
 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>maShop — KVKK Aydınlatma Metni</title>
+<style>
+:root { color-scheme: light dark; --bg:#fff; --fg:#222; --muted:#666; --border:#e0e0e0; --accent:#2d5fb8; }
+@media (prefers-color-scheme: dark) { :root { --bg:#1a1a1a; --fg:#e6e6e6; --muted:#999; --border:#333; --accent:#6ba3ff; } }
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;max-width:720px;margin:0 auto;padding:24px 16px;line-height:1.6;background:var(--bg);color:var(--fg)}
+h1,h2,h3{line-height:1.3}
+h1{border-bottom:2px solid var(--accent);padding-bottom:8px}
+h2{margin-top:32px;border-top:1px solid var(--border);padding-top:24px}
+h3{margin-top:24px}
+.meta{color:var(--muted);font-size:.9em;margin-bottom:24px}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.95em}
+th,td{border:1px solid var(--border);padding:8px 12px;text-align:left;vertical-align:top}
+th{background:rgba(0,0,0,.04)}
+@media (prefers-color-scheme: dark){th{background:rgba(255,255,255,.05)}}
+ul{padding-left:24px}
+li{margin:4px 0}
+nav.top{margin:16px 0}
+nav.top a{color:var(--accent);text-decoration:none;margin-right:16px}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);font-size:.85em}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<nav class="top"><a href="index.html">← Yasal ana sayfa</a></nav>
+
+<h1>Kişisel Verilerin Korunması Kanunu Kapsamında Aydınlatma Metni</h1>
+
+<p class="meta">
+  <strong>Veri Sorumlusu:</strong> Fatih Acı<br>
+  <strong>İletişim:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a><br>
+  <strong>Tarih:</strong> 26.04.2026
+</p>
+
+<p>Bu aydınlatma metni, 6698 sayılı Kişisel Verilerin Korunması Kanunu'nun 10. maddesi uyarınca hazırlanmıştır.</p>
+
+<h2>1. İşlenen Kişisel Veriler ve İşleme Amaçları</h2>
+<p>maShop uygulaması aşağıdaki kişisel verileri işleyebilir:</p>
+<table>
+<tr><th>Veri Türü</th><th>İşlenme Amacı</th><th>Saklama Yeri</th></tr>
+<tr><td>Google hesap e-posta adresi ve adı</td><td>Uygulama girişi ve kullanıcı kimlik doğrulama</td><td>Google sunucuları</td></tr>
+<tr><td>Uygulamaya girilen işlem verileri (ürün adı, fiyat, tarih)</td><td>Uygulamanın temel işlevinin yerine getirilmesi</td><td>Yalnızca cihazınızda (yerel depo)</td></tr>
+<tr><td>Tedarikçi/müşteri adları</td><td>Uygulamanın temel işlevinin yerine getirilmesi</td><td>Yalnızca cihazınızda (yerel depo)</td></tr>
+<tr><td>Cihaz tanımlayıcısı, uygulama kullanım istatistikleri</td><td>Uygulama performansı ve hata izleme (Firebase)</td><td>Firebase / Google sunucuları</td></tr>
+</table>
+
+<p><strong>İşlenmeyen veriler:</strong> Ödeme kartı bilgisi, banka hesabı, konum verisi, rehber erişimi, fotoğraf/medya. Ödeme işlemleri yalnızca Google Play / App Store altyapısı üzerinden gerçekleşir; kart/banka bilgisi tarafımıza iletilmez.</p>
+
+<h2>2. Kişisel Verilerin Aktarıldığı Taraflar</h2>
+<ul>
+<li><strong>Google LLC (Firebase):</strong> Hata izleme ve uygulama performans analizi amacıyla — Google Gizlilik Politikası kapsamında</li>
+<li><strong>Google LLC (Sign-In):</strong> Kimlik doğrulama — Google Kullanıcı Verisi Politikası kapsamında</li>
+<li><strong>Apple Inc. / Google LLC (Uygulama Mağazaları):</strong> Abonelik yönetimi ve ödeme işlemleri</li>
+<li>Üçüncü taraflarla <strong>ticari amaçlarla veri paylaşılmamaktadır.</strong></li>
+</ul>
+
+<h2>3. Kişisel Verilerin Toplanma Yöntemi ve Hukuki Dayanağı</h2>
+<p>Kişisel verileriniz; uygulama içindeki giriş ve kayıt işlemleriniz, Google ile giriş (OAuth) ve otomatik sistem kayıtları (Firebase) yoluyla toplanmaktadır.</p>
+<p><strong>Hukuki dayanak:</strong> KVKK md. 5/2-c (sözleşmenin kurulması ve ifası) ve md. 5/2-f (meşru menfaat).</p>
+
+<h2>4. Veri Sahibi Olarak Haklarınız (KVKK Madde 11)</h2>
+<p>KVKK'nın 11. maddesi kapsamında aşağıdaki haklara sahipsiniz:</p>
+<ul>
+<li>Kişisel verilerinizin işlenip işlenmediğini öğrenme</li>
+<li>İşlenmişse buna ilişkin bilgi talep etme</li>
+<li>Verilerin silinmesini veya yok edilmesini isteme</li>
+<li>İşlemenin kısıtlanmasını talep etme</li>
+<li>Verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme</li>
+<li>Otomatik sistemler vasıtasıyla analiz edilmesi sonucu aleyhinize çıkan kararlara itiraz etme</li>
+</ul>
+<p><strong>Başvuru:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a> adresine e-posta ile başvurabilirsiniz. Başvurular 30 gün içinde yanıtlanır.</p>
+
+<h2>5. Veri Saklama Süreleri</h2>
+<ul>
+<li>İşlem verileri (yerel): Siz silene kadar yalnızca cihazınızda</li>
+<li>Google Sign-In: Hesap kapatılana kadar</li>
+<li>Firebase log verileri: Firebase politikasına göre (genellikle 90 gün)</li>
+</ul>
+
+<p class="meta"><em>Bu metin 26.04.2026 tarihinde güncellenmiştir. Politikamızda değişiklik olması halinde bu sayfa güncellenir.</em></p>
+
+<footer>
+© 2026 Fatih Acı — maShop. <a href="index.html">Yasal ana sayfa</a>
+</footer>
+</body>
+</html>
