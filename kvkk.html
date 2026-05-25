@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -6,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>maShop — KVKK Aydınlatma Metni</title>
 <style>
-:root { color-scheme: light dark; --bg:#fff; --fg:#222; --muted:#666; --border:#e0e0e0; --accent:#2d5fb8; }
+:root { color-scheme: light dark; --bg:#fff; --fg:#222; --muted:#666; --border:#e0e0e0; --accent:#2d5fb8; --warn:rgba(255,180,0,.12); --warn-b:#ffb400; }
 @media (prefers-color-scheme: dark) { :root { --bg:#1a1a1a; --fg:#e6e6e6; --muted:#999; --border:#333; --accent:#6ba3ff; } }
 *{box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;max-width:720px;margin:0 auto;padding:24px 16px;line-height:1.6;background:var(--bg);color:var(--fg)}
@@ -15,64 +14,130 @@ h1{border-bottom:2px solid var(--accent);padding-bottom:8px}
 h2{margin-top:32px;border-top:1px solid var(--border);padding-top:24px}
 h3{margin-top:24px}
 .meta{color:var(--muted);font-size:.9em;margin-bottom:24px}
-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.95em}
-th,td{border:1px solid var(--border);padding:8px 12px;text-align:left;vertical-align:top}
-th{background:rgba(0,0,0,.04)}
-@media (prefers-color-scheme: dark){th{background:rgba(255,255,255,.05)}}
-ul{padding-left:24px}
-li{margin:4px 0}
-nav.top{margin:16px 0}
-nav.top a{color:var(--accent);text-decoration:none;margin-right:16px}
+nav{margin:24px 0}
+nav a{display:inline-block;color:var(--accent);text-decoration:none;margin:8px 16px 8px 0;padding:8px 14px;border:1px solid var(--accent);border-radius:6px;font-size:.9em}
+nav a:hover{background:var(--accent);color:var(--bg)}
+nav a.lang{border-style:dashed}
+table{border-collapse:collapse;margin:16px 0;width:100%;font-size:.9em}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--warn);font-weight:600}
+blockquote{margin:16px 0;padding:12px 16px;background:var(--warn);border-left:4px solid var(--warn-b);border-radius:4px}
+code{background:var(--border);padding:1px 6px;border-radius:3px;font-size:.9em}
+hr{border:none;border-top:1px solid var(--border);margin:24px 0}
 footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);font-size:.85em}
+ul,ol{padding-left:20px}
+li{margin:4px 0}
 a{color:var(--accent)}
 </style>
 </head>
 <body>
-
-<nav class="top"><a href="index.html">← Yasal ana sayfa</a></nav>
-
-<h1>Kişisel Verilerin Korunması Kanunu Kapsamında Aydınlatma Metni</h1>
-
-<p class="meta">
-  <strong>Veri Sorumlusu:</strong> Fatih Acı<br>
-  <strong>İletişim:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a><br>
-  <strong>Tarih:</strong> 26.04.2026
-</p>
-
-<p>Bu aydınlatma metni, 6698 sayılı Kişisel Verilerin Korunması Kanunu'nun 10. maddesi uyarınca hazırlanmıştır.</p>
-
-<h2>1. İşlenen Kişisel Veriler ve İşleme Amaçları</h2>
+<nav><a href="index.html">⬅ Ana sayfa</a><a href="privacy.html">Gizlilik</a><a aria-current="page" style="background:var(--accent);color:var(--bg)">KVKK Aydınlatma</a><a href="terms.html">Kullanıcı Sözleşmesi</a><a class="lang" href="en/kvkk.html">🇬🇧 English</a></nav>
+<hr>
+<h2>KİŞİSEL VERİLERİN KORUNMASI KANUNU KAPSAMINDA AYDINLATMA METNİ</h2>
+<p><strong>Veri Sorumlusu:</strong> Fatih Acı<br><strong>İletişim:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a><br><strong>Tarih:</strong> 05/06/2026</p>
+<p>Bu aydınlatma metni, 6698 sayılı Kişisel Verilerin Korunması Kanunu&#39;nun 10. maddesi uyarınca hazırlanmıştır.</p>
+<h3>1. İşlenen Kişisel Veriler ve İşleme Amaçları</h3>
 <p>maShop uygulaması aşağıdaki kişisel verileri işleyebilir:</p>
 <table>
-<tr><th>Veri Türü</th><th>İşlenme Amacı</th><th>Saklama Yeri</th></tr>
-<tr><td>Google hesap e-posta adresi ve adı</td><td>Uygulama girişi ve kullanıcı kimlik doğrulama</td><td>Google sunucuları</td></tr>
-<tr><td>Uygulamaya girilen işlem verileri (ürün adı, fiyat, tarih)</td><td>Uygulamanın temel işlevinin yerine getirilmesi</td><td>Yalnızca cihazınızda (yerel depo)</td></tr>
-<tr><td>Tedarikçi/müşteri adları</td><td>Uygulamanın temel işlevinin yerine getirilmesi</td><td>Yalnızca cihazınızda (yerel depo)</td></tr>
-<tr><td>Cihaz tanımlayıcısı, uygulama kullanım istatistikleri</td><td>Uygulama performansı ve hata izleme (Firebase)</td><td>Firebase / Google sunucuları</td></tr>
-</table>
-
+<thead>
+<tr>
+<th>Veri Türü</th>
+<th>İşlenme Amacı</th>
+<th>Saklama Yeri</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Google hesap e-posta adresi ve adı</td>
+<td>Uygulama girişi ve kullanıcı kimlik doğrulama</td>
+<td>Google sunucuları</td>
+</tr>
+<tr>
+<td>Apple hesap e-posta adresi (gerçek veya Apple private relay) ve adı</td>
+<td>Uygulama girişi ve kullanıcı kimlik doğrulama</td>
+<td>Apple sunucuları</td>
+</tr>
+<tr>
+<td>Uygulamaya girilen işlem verileri (ürün adı, fiyat, tarih)</td>
+<td>Uygulamanın temel işlevinin yerine getirilmesi</td>
+<td>Cihazınız + <strong>ücretli abonelik aktif olduğunda</strong> Türkiye&#39;deki kendi sunucumuzda (Muğla) AES-256 şifreli gece yedeği (~1 saat)</td>
+</tr>
+<tr>
+<td>Tedarikçi/müşteri adları</td>
+<td>Uygulamanın temel işlevinin yerine getirilmesi</td>
+<td>Cihazınız + abonelik aktif olduğunda yedek aynı şekilde</td>
+</tr>
+<tr>
+<td>Personel adları, sabit ücret ve komisyon oranları</td>
+<td>Eleman satış takibi ve komisyon hesabı</td>
+<td>Cihazınız + yedek (abonelik aktif olduğunda)</td>
+</tr>
+<tr>
+<td>Davet edilen ortak/eleman kullanıcı bilgileri</td>
+<td>Çoklu kullanıcı senkronizasyonu (ileride aktif olacak özellik)</td>
+<td>Cihaz + sunucumuz (senkron için zorunlu)</td>
+</tr>
+<tr>
+<td>Cihaz tanımlayıcısı, uygulama kullanım istatistikleri</td>
+<td>Uygulama performansı ve hata izleme (Firebase)</td>
+<td>Firebase/Google sunucuları</td>
+</tr>
+</tbody></table>
 <p><strong>İşlenmeyen veriler:</strong> Ödeme kartı bilgisi, banka hesabı, konum verisi, rehber erişimi, fotoğraf/medya. Ödeme işlemleri yalnızca Google Play / App Store altyapısı üzerinden gerçekleşir; kart/banka bilgisi tarafımıza iletilmez.</p>
-
-<h2>2. Kişisel Verilerin Aktarıldığı Taraflar (Yurt Dışı Aktarım Dahil)</h2>
-
+<p><strong>Önemli:</strong> Yedekleme hizmeti (ücretli abonelik) kapsamında saklanan veriler <strong>Türkiye&#39;deki kendi sunucumuzda</strong> (Muğla) tutulur. Ancak Google ve Apple gibi temel altyapı sağlayıcıların sunucuları yurt dışındadır (ABD/AB); bu sağlayıcılarla aktarım Madde 2&#39;de detaylandırılmıştır.</p>
+<h3>2. Kişisel Verilerin Aktarıldığı Taraflar (Yurt Dışı Aktarım Dahil)</h3>
 <p>Aşağıdaki hizmet sağlayıcıların sunucuları <strong>yurt dışında</strong> (ABD/AB) bulunmaktadır; kişisel verilerinizin bir kısmı KVKK m.9 kapsamında yurt dışına aktarılmaktadır. Aktarım, sağlayıcıların standart veri işleme sözleşmeleri (DPA / SCC) kapsamında ve uygulamayı kullanmanız için <strong>zorunlu altyapı hizmeti</strong> olarak gerçekleşir:</p>
-
 <table>
-<tr><th>Hizmet Sağlayıcı</th><th>Aktarılan Veri</th><th>Sunucu Konumu</th><th>Hukuki Güvence</th></tr>
-<tr><td>Google LLC (Firebase)</td><td>Cihaz tanımlayıcısı, kullanım istatistikleri, hata logları</td><td>ABD / AB</td><td>Google DPA + SCC</td></tr>
-<tr><td>Google LLC (Sign-In)</td><td>Ad, e-posta</td><td>ABD / AB</td><td>Google DPA + SCC</td></tr>
-<tr><td>Apple Inc. (App Store)</td><td>Abonelik ve ödeme işlem bilgileri</td><td>ABD / İrlanda</td><td>Apple DPA</td></tr>
-<tr><td>Google LLC (Play Store)</td><td>Abonelik ve ödeme işlem bilgileri</td><td>ABD / AB</td><td>Google DPA</td></tr>
-</table>
-
-<p>Üçüncü taraflarla <strong>ticari amaçlarla veri paylaşılmamaktadır.</strong></p>
-
-<h2>3. Kişisel Verilerin Toplanma Yöntemi ve Hukuki Dayanağı</h2>
-<p>Kişisel verileriniz; uygulama içindeki giriş ve kayıt işlemleriniz, Google ile giriş (OAuth) ve otomatik sistem kayıtları (Firebase) yoluyla toplanmaktadır.</p>
-<p><strong>Hukuki dayanak:</strong> KVKK md. 5/2-c (sözleşmenin kurulması ve ifası) ve md. 5/2-f (meşru menfaat).</p>
-
-<h2>4. Veri Sahibi Olarak Haklarınız (KVKK Madde 11)</h2>
-<p>KVKK'nın 11. maddesi kapsamında aşağıdaki haklara sahipsiniz:</p>
+<thead>
+<tr>
+<th>Hizmet Sağlayıcı</th>
+<th>Aktarılan Veri</th>
+<th>Sunucu Konumu</th>
+<th>Hukuki Güvence</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Google LLC (Firebase)</td>
+<td>Cihaz tanımlayıcısı, kullanım istatistikleri, hata logları</td>
+<td>ABD / AB</td>
+<td>Google DPA + SCC</td>
+</tr>
+<tr>
+<td>Google LLC (Sign-In)</td>
+<td>Ad, e-posta</td>
+<td>ABD / AB</td>
+<td>Google DPA + SCC</td>
+</tr>
+<tr>
+<td>Apple Inc. (Sign-In)</td>
+<td>Ad, e-posta (gerçek veya <code>xxx@privaterelay.appleid.com</code>)</td>
+<td>ABD / İrlanda</td>
+<td>Apple DPA</td>
+</tr>
+<tr>
+<td>Apple Inc. (App Store)</td>
+<td>Abonelik ve ödeme işlem bilgileri</td>
+<td>ABD / İrlanda</td>
+<td>Apple DPA</td>
+</tr>
+<tr>
+<td>Google LLC (Play Store)</td>
+<td>Abonelik ve ödeme işlem bilgileri</td>
+<td>ABD / AB</td>
+<td>Google DPA</td>
+</tr>
+</tbody></table>
+<p><strong>Üçüncü taraflarla ticari amaçlarla veri paylaşılmamaktadır.</strong></p>
+<p><strong>Apple Sign-In Private Email Relay:</strong> Apple ile giriş seçeneğinde kullanıcı, gerçek e-posta adresi yerine Apple tarafından oluşturulan <code>xxx@privaterelay.appleid.com</code> formatındaki anonim adresi paylaşmayı tercih edebilir. Bu durumda tarafınıza gönderilen ileti Apple sunucuları aracılığıyla gerçek adresinize iletilir; biz gerçek adresinizi göremeyiz. Bu tercihinizi istediğiniz zaman Apple ID ayarlarından geri alabilirsiniz.</p>
+<p><strong>Yurt içi saklama (ücretli abonelik aktif olduğunda):</strong> İşlem verilerinizin yedekleri <strong>Türkiye&#39;deki kendi sunucumuzda (Muğla)</strong> tutulur, yurt dışına aktarılmaz. Detay: Madde 6.</p>
+<h3>3. Kişisel Verilerin Toplanma Yöntemi ve Hukuki Dayanağı</h3>
+<p>Kişisel verileriniz; uygulama içindeki giriş ve kayıt işlemleriniz, Google veya Apple ile giriş (OAuth) ve otomatik sistem kayıtları (Firebase) yoluyla toplanmaktadır.</p>
+<p><strong>Hukuki dayanak:</strong></p>
+<ul>
+<li><strong>KVKK md. 5/2-c (sözleşmenin kurulması ve ifası):</strong> Uygulamanın temel işlevi ve ücretli abonelik kapsamındaki yedekleme hizmetleri bu kapsamdadır.</li>
+<li><strong>KVKK md. 5/2-f (meşru menfaat):</strong> Hata izleme ve performans analizi (Firebase) bu kapsamdadır.</li>
+</ul>
+<h3>4. Veri Sahibi Olarak Haklarınız (KVKK Madde 11)</h3>
+<p>KVKK&#39;nın 11. maddesi kapsamında aşağıdaki haklara sahipsiniz:</p>
 <ul>
 <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme</li>
 <li>İşlenmişse buna ilişkin bilgi talep etme</li>
@@ -81,19 +146,88 @@ a{color:var(--accent)}
 <li>Verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme</li>
 <li>Otomatik sistemler vasıtasıyla analiz edilmesi sonucu aleyhinize çıkan kararlara itiraz etme</li>
 </ul>
+<p><strong>Veri Taşınabilirliği (m.11/ğ — V1.0 itibarıyla otomatize):</strong><br>Aktif veya erişimi kısıtlanmış (14g grace) kullanıcılar, kendi verilerinin makine okunabilir kopyasını uygulama içinden <code>Verilerimi İndir</code> butonu ile JSON formatında alabilir. Erişim tamamen kaldırıldıktan sonra talep e-posta ile yapılır.</p>
 <p><strong>Başvuru:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a> adresine e-posta ile başvurabilirsiniz. Başvurular 30 gün içinde yanıtlanır.</p>
-
-<h2>5. Veri Saklama Süreleri</h2>
+<h3>5. Veri Saklama Süreleri</h3>
 <ul>
-<li>İşlem verileri (yerel): Siz silene kadar yalnızca cihazınızda</li>
+<li>İşlem verileri (cihaz): Siz silene kadar cihazınızda</li>
+<li>İşlem verileri (sunucu yedeği — abonelik aktifken): Abonelik süresi boyunca; abonelik iptalinden <strong>30 gün</strong> sonra otomatik silinir</li>
 <li>Google Sign-In: Hesap kapatılana kadar</li>
+<li>Apple Sign-In: Hesap kapatılana kadar. Hesap silme talebinde bulunulduğunda 30 günlük geri alma süresinin sonunda Apple&#39;a <code>auth/revoke</code> çağrısı yapılır; uygulama Apple ID ayarlarınızdaki &quot;Apple Kimliğini Kullanan Uygulamalar&quot; listesinden otomatik düşer.</li>
 <li>Firebase log verileri: Firebase politikasına göre (genellikle 90 gün)</li>
+<li>Personel / komisyon verileri: Aktif abonelik süresince + iptal sonrası 30 gün</li>
 </ul>
+<h3>6. Yedekleme ve Çoklu Kullanıcı Hizmetleri</h3>
+<p><strong>Yedekleme (ücretli abonelik aktif olduğunda):</strong></p>
+<ul>
+<li>14 günlük ücretsiz deneme süresi sonunda abonelik başlatılması durumunda, işlem verileriniz her gece arka planda (~1 saat) Türkiye&#39;deki kendi sunucumuzda (Muğla) <strong>AES-256 ile şifreli</strong> olarak yedeklenir.</li>
+<li>Veri yurt dışına aktarılmaz; KVKK m.9 yurt dışı veri aktarımı söz konusu değildir.</li>
+<li>Abonelik iptal edildiğinde sunucudaki yedek <strong>30 gün içinde</strong> silinir.</li>
+<li><strong>Onay:</strong> Aboneliğe geçişte paywall ekranında ayrı bir kabul işareti ile bu işleme onayınız alınır (KVKK m.10 kapsamında ayrı aydınlatma).</li>
+</ul>
+<p><strong>Çoklu Kullanıcı (davet edilen ortak / eleman):</strong></p>
+<ul>
+<li>Ana kullanıcı, WhatsApp/SMS ile bağlantı paylaşarak başka kullanıcıyı davet edebilir.</li>
+<li>Davet edilen kullanıcı aynı dükkân hesabına erişerek senkron çalışır (rolüne göre tam veya kısıtlı erişim).</li>
+<li><strong>Eleman rolündeki</strong> kullanıcı sadece kendi yaptığı satışları ve komisyon hesabını görür; dükkânın toplam cirosunu ve alış fiyatlarını göremez.</li>
+<li>Davet edilen kullanıcı kabul ekranında <strong>ayrı KVKK aydınlatma metni</strong> ile bilgilendirilir; davet linkiyle veri paylaşımı bu noktada onaylanır.</li>
+</ul>
+<p><strong>İş İlişkisinin Sonlandırılması ve Veri Talebi (2026-05-21):</strong></p>
+<ul>
+<li>Ana kullanıcı (dükkân sahibi), davet edilmiş kullanıcının erişimini iki şekilde sonlandırabilir:<ol>
+<li><strong>Standart sonlandırma:</strong> Erişim 14 gün boyunca yalnızca kendi satış geçmişi ve kendi ödeme/alacak bakiyesi ile sınırlandırılır (read-only). 14 gün sonunda hesap tamamen kapatılır.</li>
+<li><strong>Acil sonlandırma:</strong> Erişim aynı anda kesilir (sahtekarlık, hırsızlık vb. durumlar için).</li>
+</ol>
+</li>
+<li>Ayrıca <strong>ana kullanıcının aboneliği sona erdiğinde</strong> sistem, davet edilen kullanıcının erişimini otomatik olarak <strong>14 gün</strong> sonra kapatır; bu süre içinde abonelik yenilenirse erişim geri açılır.</li>
+<li>Erişim sonlandırılan kullanıcının uygulamaya girdiği veriler (yapmış olduğu satışlar, kendi adıyla saklanan komisyon kayıtları) <strong>silinmez</strong>; dükkân sahibinin raporlarında satış geçmişi olarak korunur — bu KVKK m.5/2-c (sözleşmenin ifasından doğan zorunlu kayıt) kapsamındadır.</li>
+<li><strong>Kişisel veri talebi (KVKK m.11):</strong> Erişimi sonlandırılan kullanıcı, kendisine ait verilerin (satış kayıtları, komisyon hesabı, ödeme geçmişi) bir kopyasını, silinmesini veya işleme kısıtlanmasını talep etmek için yukarıda belirtilen veri sorumlusu e-posta adresine başvurabilir. Talepler 30 gün içinde yanıtlanır.</li>
+</ul>
+<p><strong>Opsiyonel Uçtan Uca Şifreleme (E2EE — kullanıcı talebi ile):</strong></p>
+<ul>
+<li>Kullanıcının talep etmesi halinde, dükkân ismi ve ciro gibi hassas veriler kullanıcının belirlediği parola ile <strong>istemcide</strong> (cihazda) şifrelenir; bu durumda biz dahi sunucudaki yedek içeriğini okuyamayız.</li>
+<li>Şifreleme parolası kullanıcının cihazında saklanır; <strong>parolanın unutulması durumunda veri kurtarılamaz</strong>.</li>
+<li>Bu özellik standart yedeklemenin üstüne ek bir koruma katmanıdır; kullanıcı isterse açar, isterse kapatır.</li>
+</ul>
+<h3>6.1 Ortak Rolü ve Asimetrik Yetki (V1.0 itibarıyla)</h3>
+<p>maShop hesabı; hesabı oluşturan <strong>Birincil Hesap Sahibi</strong> (kurucu) ve davet ettiği <strong>Ortak</strong> / <strong>Çalışan</strong> rollü kullanıcılardan oluşan çoklu kullanıcı yapısına sahiptir.</p>
+<p><strong>Yetki Dağılımı:</strong></p>
+<ul>
+<li><strong>Birincil Hesap Sahibi:</strong> Hesap silme, abonelik iptali, sahiplik devri, diğer kullanıcıların çıkarılması ve yetkilerinin ayarlanması yetkilerinin <strong>tamamı</strong> kendisine aittir.</li>
+<li><strong>Ortak:</strong> Sahibe eşdeğer veri erişimi (satış, alış, gider, müşteri, ürün); hesap yönetimi yetkisi <strong>yoktur</strong>.</li>
+<li><strong>Çalışan:</strong> Yalnız kendi sattığı kayıtlara erişim; analiz, personel ve hesap yönetimi kapalıdır.</li>
+</ul>
+<p><strong>Veri Görünürlüğü ve Sorumluluk:</strong></p>
+<p>Ortak rolündeki kullanıcılar, davetin kabulü anından itibaren hesap içindeki tüm ticari verilere (geçmiş ve gelecek) erişebilir. Bu erişim Birincil Hesap Sahibinin onayıyla başlar ve istediği zaman kısıtlanabilir veya sonlandırılabilir.</p>
+<p>Çalışan rolündeki kullanıcılar yalnız kendi sattığı kayıtlara ve kendi komisyon raporuna erişir.</p>
+<p><strong>Hesap Silme ve Bildirim:</strong></p>
+<p>Birincil Hesap Sahibi hesabı silme talebinde bulunduğunda:</p>
+<ul>
+<li>Hesap soft delete (silinme onayı bekleyen) duruma geçer ve <strong>30 günlük geri alma süresi (grace period)</strong> başlar.</li>
+<li>Hesabın aktif ortak ve çalışan kullanıcılarına uygulama içi anlık bildirim (push) gönderilir.</li>
+<li>Bu süre içinde Birincil Hesap Sahibi silme talebinden vazgeçebilir.</li>
+<li>30 gün dolduğunda tüm hesap verileri kalıcı olarak silinir (hard delete).</li>
+</ul>
+<p>Ortakların ve çalışanların hesap silinmesi durumunda veri kaybı yaşaması halinde, talepleri Birincil Hesap Sahibine yöneltmesi gerekir; bu konuda maShop sorumluluk üstlenmez.</p>
+<p><strong>Veri Sahibi Hakları (KVKK m.11) Çatışması:</strong></p>
+<p>Kullanıcının KVKK m.11 kapsamındaki kişisel verisinin silinmesi talebi, diğer kullanıcıların (ortak veya çalışan) itirazından bağımsız olarak, ilgili kişisel veri kapsamında yerine getirilir. Bu durumda ticari mahiyetteki veriler (satış kaydı, fatura) TTK m.82 kapsamında 10 yıl saklanmaya devam eder; yalnızca kişisel veri unsurları (ad, e-posta) silinir veya anonimleştirilir.</p>
+<p><strong>Audit Log Saklama Süresi:</strong></p>
+<p>Hesap yönetimi olaylarına (davet, kabul, rol değişimi, işten çıkar, hesap silme) ait audit kayıtları, ticari belge niteliğinde olmaları nedeniyle <strong>TTK m.82 uyarınca 10 yıl</strong> saklanır.</p>
+<p><strong>İletişim Kanalı:</strong></p>
+<p>Hesap içi yönetim bildirimleri (silme, kovma, yetki değişikliği) öncelikle uygulama içi push bildirimi olarak iletilir. Kalıcı kanal (e-posta) entegrasyonu sonraki sürümlerde eklenecektir; o zamana kadar kritik bildirimler için kullanıcı periyodik olarak uygulamayı açmalıdır.</p>
+<h3>7. Veri Güvenliği Önlemleri</h3>
+<p>KVKK m.12 kapsamında alınan teknik ve idari önlemler:</p>
+<ul>
+<li><strong>Aktarım sırasında şifreleme:</strong> TLS 1.3 (HTTPS)</li>
+<li><strong>Yedek şifreleme:</strong> AES-256 (saklama sırasında)</li>
+<li><strong>Erişim kontrolü:</strong> Sunucu yalnızca yetkili kişi (geliştirici) tarafından erişilir; ev sunucusu fiziksel erişim sınırlamasıyla korunur</li>
+<li><strong>Ağ güvenliği:</strong> Firewall, fail2ban, Cloudflare proxy</li>
+<li><strong>Yedekleme:</strong> Birden fazla yerel ortama düzenli yedek + soğuk depo</li>
+<li><strong>Veri ihlali bildirimi:</strong> KVKK m.12/5 kapsamında 72 saat içinde Kurul ve etkilenen veri sahiplerine bildirim yapılır</li>
+</ul>
+<hr>
+<p><em>Bu metin 05/06/2026 tarihinde güncellenmiştir. Politikamızda değişiklik olması halinde bu sayfa güncellenir ve uygulama içi bildirim yapılır.</em></p>
 
-<p class="meta"><em>Bu metin 26.04.2026 tarihinde güncellenmiştir. Politikamızda değişiklik olması halinde bu sayfa güncellenir.</em></p>
-
-<footer>
-© 2026 Fatih Acı — maShop. <a href="index.html">Yasal ana sayfa</a>
-</footer>
+<footer>Yayın: 05/06/2026 · Bu sayfa <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a> üzerinden yayınlanır. Kaynak: <code>d6f871a</code>.</footer>
 </body>
 </html>

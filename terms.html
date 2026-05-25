@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -7,7 +6,7 @@
 <title>maShop — Kullanıcı Sözleşmesi</title>
 <style>
 :root { color-scheme: light dark; --bg:#fff; --fg:#222; --muted:#666; --border:#e0e0e0; --accent:#2d5fb8; --warn:rgba(255,180,0,.12); --warn-b:#ffb400; }
-@media (prefers-color-scheme: dark) { :root { --bg:#1a1a1a; --fg:#e6e6e6; --muted:#999; --border:#333; --accent:#6ba3ff; --warn:rgba(255,180,0,.18); } }
+@media (prefers-color-scheme: dark) { :root { --bg:#1a1a1a; --fg:#e6e6e6; --muted:#999; --border:#333; --accent:#6ba3ff; } }
 *{box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;max-width:720px;margin:0 auto;padding:24px 16px;line-height:1.6;background:var(--bg);color:var(--fg)}
 h1,h2,h3{line-height:1.3}
@@ -15,61 +14,64 @@ h1{border-bottom:2px solid var(--accent);padding-bottom:8px}
 h2{margin-top:32px;border-top:1px solid var(--border);padding-top:24px}
 h3{margin-top:24px}
 .meta{color:var(--muted);font-size:.9em;margin-bottom:24px}
-ul,ol{padding-left:24px}
-li{margin:4px 0}
-.warning{background:var(--warn);border-left:4px solid var(--warn-b);padding:12px 16px;margin:16px 0;border-radius:4px}
-nav.lang{margin:16px 0}
-nav.lang a{color:var(--accent);text-decoration:none;margin-right:16px;font-weight:600}
-.section-divider{margin:48px 0;height:2px;background:var(--accent);opacity:.3}
+nav{margin:24px 0}
+nav a{display:inline-block;color:var(--accent);text-decoration:none;margin:8px 16px 8px 0;padding:8px 14px;border:1px solid var(--accent);border-radius:6px;font-size:.9em}
+nav a:hover{background:var(--accent);color:var(--bg)}
+nav a.lang{border-style:dashed}
+table{border-collapse:collapse;margin:16px 0;width:100%;font-size:.9em}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--warn);font-weight:600}
+blockquote{margin:16px 0;padding:12px 16px;background:var(--warn);border-left:4px solid var(--warn-b);border-radius:4px}
+code{background:var(--border);padding:1px 6px;border-radius:3px;font-size:.9em}
+hr{border:none;border-top:1px solid var(--border);margin:24px 0}
 footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);font-size:.85em}
+ul,ol{padding-left:20px}
+li{margin:4px 0}
 a{color:var(--accent)}
 </style>
 </head>
 <body>
-
-<nav class="lang">
-  <a href="#tr">Türkçe</a>
-  <a href="#en">English</a>
-  <a href="index.html">← Yasal ana sayfa</a>
-</nav>
-
-<section id="tr">
-<h1>Kullanıcı Sözleşmesi</h1>
-<p class="meta">
-  <strong>Son güncelleme:</strong> 26.04.2026<br>
-  <strong>Geliştirici:</strong> Fatih Acı<br>
-  <strong>İletişim:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a>
-</p>
-
-<p>maShop uygulamasını ("Uygulama") kullanarak aşağıdaki koşulları kabul etmiş sayılırsınız.</p>
-
-<h2>Madde 1 — Hizmet Tanımı</h2>
+<nav><a href="index.html">⬅ Ana sayfa</a><a href="privacy.html">Gizlilik</a><a href="kvkk.html">KVKK Aydınlatma</a><a aria-current="page" style="background:var(--accent);color:var(--bg)">Kullanıcı Sözleşmesi</a><a class="lang" href="en/terms.html">🇬🇧 English</a></nav>
+<hr>
+<h2>KULLANICI SÖZLEŞMESİ / TERMS OF SERVICE</h2>
+<p><strong>Son güncelleme:</strong> 05/06/2026<br><strong>Geliştirici:</strong> Fatih Acı<br><strong>İletişim:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a></p>
+<p>maShop uygulamasını (&quot;Uygulama&quot;) kullanarak aşağıdaki koşulları kabul etmiş sayılırsınız.</p>
+<hr>
+<h3>Madde 1 — Hizmet Tanımı</h3>
 <p>maShop; küçük esnaf ve bireysel satıcıların satış, alış ve gider kayıtlarını hızlıca tutabilmesi amacıyla geliştirilmiş bir mobil uygulamadır. Uygulama, <strong>muhasebe yazılımı, mali müşavirlik hizmeti veya resmi kayıt sistemi değildir.</strong></p>
-
-<h2>Madde 2 — Abonelik ve Ödeme</h2>
+<hr>
+<h3>Madde 2 — Abonelik ve Ödeme</h3>
 <ul>
 <li>Uygulama 14 günlük ücretsiz deneme süresi sunar.</li>
 <li>Deneme süresi sonunda, iptal edilmemişse abonelik otomatik olarak ücretli döneme geçer.</li>
 <li>Ücretler Google Play veya App Store tarafından tahsil edilir.</li>
 <li>İptal işlemi Google Play / App Store hesap ayarlarından yapılabilir.</li>
-<li>Geçmiş abonelik ücretleri iade edilmez; ilgili store'un iade politikası geçerlidir.</li>
+<li>Geçmiş abonelik ücretleri iade edilmez; ilgili store&#39;un iade politikası geçerlidir.</li>
 </ul>
-
-<h2>Madde 3 — Kullanıcı Verileri ve Gizlilik</h2>
-<p>Gizlilik uygulamalarımız için lütfen <a href="privacy.html">Gizlilik Politikası</a>'nı inceleyin.</p>
-
-<h2>Madde 4 — Kullanıcının Yükümlülükleri</h2>
+<hr>
+<h3>Madde 3 — Kullanıcı Verileri ve Gizlilik</h3>
+<p>Gizlilik uygulamalarımız için lütfen <a href="#">Gizlilik Politikası&#39;nı</a> inceleyin.</p>
+<p><strong>3.1 Yedekleme ve Çoklu Cihaz Davranışı.</strong> Kullanıcı verileri öncelikle cihazda (yerel SQLite) saklanır; sunucu yedeği ve cihazlar arası senkronizasyon planınıza göre değişir:</p>
+<ul>
+<li><strong>Free ve Solo planlarda tek cihaz politikası uygulanır.</strong> Yeni bir cihazdan oturum açıldığında önceki cihazın oturumu otomatik sonlandırılır. Bu davranış kullanıcının verisini kaybetmez; sunucudaki en son yedek korunur.</li>
+<li><strong>Pro planında çoklu cihazdan eş zamanlı erişim mevcuttur.</strong> Aynı hesap birden fazla cihazda aktif olabilir; cihazlar arasında veri otomatik senkronize edilir. Kullanıcı <em>Ayarlar → Bağlı Cihazlar</em> ekranı üzerinden aktif cihazları görüntüleyebilir ve istediği cihazı manuel olarak çıkarabilir.</li>
+</ul>
+<p><strong>3.2 Silinen Kayıtların Saklanması (Tombstone).</strong> Bir kayıt silindiğinde, diğer cihazlara silme bilgisinin ulaşmasını sağlamak için kayıt sunucuda <strong>30 gün süreyle &quot;silinmiş&quot; işaretli</strong> olarak tutulur. 30 günün sonunda kalıcı olarak silinir. Bu süre teknik bir gerekliliktir ve KVKK kapsamında <strong>işlemenin son bulduğu</strong> kabul edilir; kayıt görüntülenmez, raporlara dahil edilmez.</p>
+<p><strong>3.3 Hesap Silme — KVKK Madde 11.</strong> Hesap silme talebi sonrasında 14 günlük geri alma süresi başlar; bu süre içinde kullanıcı hesabı geri kazanabilir. Sürenin sonunda hesap <strong>soft delete</strong> durumunda 16 gün daha tombstone propagation için saklanır (toplam 30 gün). Bu sürelerin tamamı dolduğunda kişisel veriler anonimleştirilerek/silinerek <strong>hard-delete</strong> uygulanır. Ticari mahiyetteki anonim toplulaştırılmış kayıtlar TTK m.82 uyarınca 10 yıl saklanmaya devam eder.</p>
+<hr>
+<h3>Madde 4 — Kullanıcının Yükümlülükleri</h3>
 <p>Kullanıcı:</p>
 <ul>
 <li>Uygulamayı yalnızca yasal amaçlarla kullanmayı,</li>
-<li>Üçüncü kişilerin verilerini rızasız girmemeyi,</li>
-<li>Türkiye'de geçerli vergi mevzuatına ve muhasebe yükümlülüklerine bizzat uymayı</li>
+<li>Üçüncü kişilerin verilerini rızasız girmermeyi,</li>
+<li>Türkiye&#39;de geçerli vergi mevzuatına ve muhasebe yükümlülüklerine bizzat uymayı</li>
 </ul>
 <p>kabul eder.</p>
-
-<h2>Madde 5 — Sorumluluk Reddi (YAKLAŞIK HESAPLAMA)</h2>
-<div class="warning"><strong>Bu madde sizi korur. Lütfen dikkatle okuyun.</strong></div>
-
+<hr>
+<h3>Madde 5 — Sorumluluk Reddi (YAKLAŞIK HESAPLAMA)</h3>
+<blockquote>
+<p><strong>Bu madde sizi korur. Kısaltma, atlama.</strong></p>
+</blockquote>
 <p>maShop uygulamasında gösterilen tüm finansal hesaplamalar — kâr/zarar, maliyet, toplam tutar, ortalama fiyat ve benzeri değerler — <strong>tahmini ve bilgi amaçlı</strong> olup aşağıdaki nitelikleri taşımaz:</p>
 <ul>
 <li>Mali müşavirlik veya muhasebe hizmeti</li>
@@ -77,47 +79,45 @@ a{color:var(--accent)}
 <li>Vergi beyanı veya resmi mali kayıt</li>
 <li>Kesin finansal veri</li>
 </ul>
-
 <p><strong>Kullanıcı, uygulama verilerini resmi vergi beyannamesi, muhasebe kaydı, banka başvurusu veya hukuki süreçlerde tek dayanak olarak kullanmamayı kabul eder.</strong></p>
-
 <p>Geliştirici, hesaplama hatası, veri kaybı veya uygulamanın kullanımından doğan dolaylı ya da doğrudan zararlardan sorumlu tutulamaz.</p>
-
-<h2>Madde 6 — Hizmetin Değiştirilmesi veya Sonlandırılması</h2>
+<hr>
+<h3>Madde 6 — Hizmetin Değiştirilmesi veya Sonlandırılması</h3>
 <p>Geliştirici, önceden bildirim yapmak kaydıyla uygulamanın özelliklerini değiştirme veya hizmeti sonlandırma hakkını saklı tutar. Aktif abonelik süresi içinde hizmet sonlandırılırsa kalan süre için ücret iadesi yapılır.</p>
-
-<h2>Madde 7 — Uygulanacak Hukuk</h2>
-<p>Bu sözleşme Türkiye Cumhuriyeti hukukuna tabidir. Uyuşmazlıklarda <strong>Muğla</strong> mahkemeleri ve icra daireleri yetkilidir.</p>
-
-<h2>Madde 8 — İletişim</h2>
+<hr>
+<h3>Madde 7 — Uygulanacak Hukuk</h3>
+<p>Bu sözleşme Türkiye Cumhuriyeti hukukuna tabidir. Uyuşmazlıklarda Marmaris mahkemeleri yetkilidir.</p>
+<hr>
+<h3>Madde 8 — Çoklu Kullanıcı ve Yetki Dengesi</h3>
+<p><strong>8.1 Birincil Hesap Sahibi.</strong> Hesabı ilk açan ve abonelik faturasını ödeyen kullanıcı <strong>Birincil Hesap Sahibi</strong> olarak tanımlanır. Hesabın silinmesi, aboneliğin iptali, ileride uygulanacak hesap devri ve davet edilen kullanıcıların çıkarılması yalnız Birincil Hesap Sahibi tarafından yapılabilir.</p>
+<p><strong>8.2 Davet Edilen Kullanıcılar.</strong> Birincil Hesap Sahibi, hesabına ek kullanıcı (<strong>Ortak</strong> veya <strong>Çalışan</strong>) davet edebilir. Davetin kabulü, davet edilen kullanıcının bu Sözleşme ve KVKK Aydınlatma Metnine açık rızasını ifade eder.</p>
+<p><strong>8.3 Yetki Asimetrisi.</strong> Ortak rolündeki kullanıcı Birincil Hesap Sahibine <strong>eşdeğer veri erişimine</strong> sahiptir ancak hesap yönetimi yetkisi <strong>yoktur</strong>. Birincil Hesap Sahibi, ortağa verilen yetkileri (analiz görme, derin analiz, personel sayfası, kasa hareketi silme) bireysel olarak kısıtlayabilir.</p>
+<p><strong>8.4 Hesap Silme Akışı.</strong> Birincil Hesap Sahibinin hesap silme talebi 30 günlük geri alma süresi (grace period) başlatır. Bu süre içinde hesap soft delete durumdadır; süre dolduğunda kalıcı silinir. Ortak ve çalışanlara uygulama içi anlık bildirim gönderilir; aktif itiraz hakkı yoktur. Veri kaybı durumunda taraflar arası anlaşmazlık Birincil Hesap Sahibi ile ortak/çalışan arasındadır; maShop bu uyuşmazlıkta taraf değildir.</p>
+<p><strong>8.5 Anlaşmazlık ve Tasfiye.</strong> Ortak ile Birincil Hesap Sahibi arasında ticari ortaklık veya kişisel anlaşmazlık durumunda maShop tarafsız kalır ve hesap üzerinde herhangi bir tarafa yönlendirme yapmaz. Hesabın veri/maddi yönetimi tarafların kendi aralarındaki sözleşme (varsa) veya yargı kararıyla çözülür.</p>
+<p><strong>8.6 Veri Sahibi Hakları (KVKK m.11).</strong> Kullanıcının kendi kişisel verisinin silinmesi talebi, hesabın diğer kullanıcılarının itirazından bağımsız olarak yerine getirilir. Ticari mahiyetteki kayıtlar TTK m.82 uyarınca 10 yıl saklanmaya devam eder; yalnızca kişisel veri unsurları silinir.</p>
+<p><strong>8.7 Sahip Devri (sonraki sürümlere ertelenen özellik).</strong> Birincil Hesap Sahipliğinin başka bir kullanıcıya devredilmesi (vefat, emeklilik veya kişisel tercih nedeniyle) <strong>bu sürümde</strong> uygulama içinde mümkün değildir; sonraki sürümlerde &quot;varis atama&quot; mekanizması ile eklenecektir. O zamana kadar hesap sahibinin erişim kaybı durumunda kullanıcı doğrudan maShop destek ile iletişime geçmelidir.</p>
+<p><strong>8.8 Hizmet Sağlayıcının Tarafsızlığı.</strong> maShop, hesap içindeki kullanıcılar arasındaki uyuşmazlıklarda <strong>arabuluculuk yapmaz</strong>. Birincil Hesap Sahibinin aldığı kararlar maShop tarafından bağlayıcı kabul edilir.</p>
+<hr>
+<h3>Madde 9 — İletişim</h3>
 <p><a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a></p>
-</section>
-
-<div class="section-divider"></div>
-
-<section id="en">
-<h1>Terms of Service (English Summary)</h1>
-<p class="meta">
-  <strong>Last updated:</strong> 04/26/2026<br>
-  <strong>Developer:</strong> Fatih Acı<br>
-  <strong>Contact:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a>
-</p>
-
-<p><em>Short English version for international users. The Turkish text above is legally binding for TR users.</em></p>
-
+<hr>
+<h2>TERMS OF SERVICE — English Summary</h2>
+<blockquote>
+<p>Short English version for international users (full Turkish text above is legally binding for TR users).</p>
+</blockquote>
 <p><strong>maShop</strong> is a sales and expense tracking tool for small business owners. By using the App you agree:</p>
-
 <ol>
-<li><strong>Subscription:</strong> 14-day free trial, then auto-renews at the listed price. Cancel anytime via your store account settings.</li>
-<li><strong>Financial Disclaimer:</strong> All calculations shown in maShop (profit, loss, costs, totals) are <strong>approximate estimates for informational purposes only</strong>. They are not financial advice, accounting services, or official records. Do not use in-app calculations as the sole basis for tax filings, financial reporting, or legal proceedings. The developer is not liable for any financial decisions made based on in-app data.</li>
-<li><strong>Data:</strong> Your transaction data is stored locally on your device. See our <a href="privacy.html">Privacy Policy</a> for details.</li>
-<li><strong>Governing Law:</strong> These terms are governed by the laws of the Republic of Turkey. Disputes shall be resolved before the courts of Istanbul.</li>
+<li><p><strong>Subscription:</strong> 14-day free trial, then auto-renews at the listed price. Cancel anytime via your store account settings.</p>
+</li>
+<li><p><strong>Financial Disclaimer:</strong> All calculations shown in maShop (profit, loss, costs, totals) are <strong>approximate estimates for informational purposes only</strong>. They are not financial advice, accounting services, or official records. Do not use in-app calculations as the sole basis for tax filings, financial reporting, or legal proceedings. The developer is not liable for any financial decisions made based on in-app data.</p>
+</li>
+<li><p><strong>Data:</strong> Your transaction data is stored locally on your device. See our Privacy Policy for details.</p>
+</li>
+<li><p><strong>Governing Law:</strong> These terms are governed by the laws of the Republic of Turkey.</p>
+</li>
 </ol>
-
 <p><strong>Contact:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a></p>
-</section>
 
-<footer>
-© 2026 Fatih Acı — maShop. <a href="index.html">Yasal ana sayfa</a>
-</footer>
+<footer>Yayın: 05/06/2026 · Bu sayfa <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a> üzerinden yayınlanır. Kaynak: <code>d6f871a</code>.</footer>
 </body>
 </html>
