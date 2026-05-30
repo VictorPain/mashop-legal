@@ -146,7 +146,7 @@ a{color:var(--accent)}
 <li>Verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme</li>
 <li>Otomatik sistemler vasıtasıyla analiz edilmesi sonucu aleyhinize çıkan kararlara itiraz etme</li>
 </ul>
-<p><strong>Veri Taşınabilirliği (m.11/ğ — V1.0 itibarıyla otomatize):</strong><br>Aktif veya erişimi kısıtlanmış (14g grace) kullanıcılar, kendi verilerinin makine okunabilir kopyasını uygulama içinden <code>Verilerimi İndir</code> butonu ile JSON formatında alabilir. Erişim tamamen kaldırıldıktan sonra talep e-posta ile yapılır.</p>
+<p><strong>Veri Taşınabilirliği (m.11/ğ — V1.0 itibarıyla otomatize):</strong><br>Aktif kullanıcılar ile geri alma (grace) süresindeki kullanıcılar, kendi verilerinin makine okunabilir kopyasını uygulama içinden <code>Verilerimi İndir</code> butonu ile JSON formatında alabilir. Erişim tamamen kaldırıldıktan sonra talep e-posta ile yapılır.</p>
 <p><strong>Başvuru:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a> adresine e-posta ile başvurabilirsiniz. Başvurular 30 gün içinde yanıtlanır.</p>
 <h3>5. Veri Saklama Süreleri</h3>
 <ul>
@@ -156,6 +156,11 @@ a{color:var(--accent)}
 <li>Apple Sign-In: Hesap kapatılana kadar. Hesap silme talebinde bulunulduğunda 30 günlük geri alma süresinin sonunda Apple&#39;a <code>auth/revoke</code> çağrısı yapılır; uygulama Apple ID ayarlarınızdaki &quot;Apple Kimliğini Kullanan Uygulamalar&quot; listesinden otomatik düşer.</li>
 <li>Firebase log verileri: Firebase politikasına göre (genellikle 90 gün)</li>
 <li>Personel / komisyon verileri: Aktif abonelik süresince + iptal sonrası 30 gün</li>
+<li><strong>Hesap silme talebi:</strong> Talepten sonra 30 günlük geri alma süresi; süre sonunda hesaba ait tüm veriler (kişisel + işlem) kalıcı silinir</li>
+<li><strong>İnaktif hesap:</strong> Hesaba kesintisiz 1 yıl giriş yapılmazsa hesap ve tüm verileri kalıcı silinir (silme öncesi bilgilendirme yapılır)</li>
+<li><strong>Silme denetim kaydı:</strong> Silme tarihi + silinen kayıt sayısı; KVKK m.7/m.12 kapsamında tutulur (içerik/kişisel veri içermez)</li>
+<li><strong>Güvenlik denetim logu (audit):</strong> 365 gün, sonra otomatik silinir</li>
+<li>Ticari kayıtlar için 10 yıl gibi bir saklama <strong>yapılmaz</strong> (TTK m.82 yükümlülüğü kullanıcının kendisine aittir)</li>
 </ul>
 <h3>6. Yedekleme ve Çoklu Kullanıcı Hizmetleri</h3>
 <p><strong>Yedekleme (ücretli abonelik aktif olduğunda):</strong></p>
@@ -208,11 +213,12 @@ a{color:var(--accent)}
 <li>Bu süre içinde Birincil Hesap Sahibi silme talebinden vazgeçebilir.</li>
 <li>30 gün dolduğunda tüm hesap verileri kalıcı olarak silinir (hard delete).</li>
 </ul>
+<p>Ayrıca hesaba <strong>kesintisiz 1 yıl</strong> boyunca hiçbir kullanıcı giriş yapmazsa, hesap inaktiflik nedeniyle (silme öncesi makul süre önce bilgilendirme ile) kalıcı olarak silinir; bu süre içinde giriş yapılırsa süre yeniden başlar. Hiçbir durumda maShop silinen veriyi kullanıcı adına saklamaya devam etmez.</p>
 <p>Ortakların ve çalışanların hesap silinmesi durumunda veri kaybı yaşaması halinde, talepleri Birincil Hesap Sahibine yöneltmesi gerekir; bu konuda maShop sorumluluk üstlenmez.</p>
 <p><strong>Veri Sahibi Hakları (KVKK m.11) Çatışması:</strong></p>
-<p>Kullanıcının KVKK m.11 kapsamındaki kişisel verisinin silinmesi talebi, diğer kullanıcıların (ortak veya çalışan) itirazından bağımsız olarak, ilgili kişisel veri kapsamında yerine getirilir. Bu durumda ticari mahiyetteki veriler (satış kaydı, fatura) TTK m.82 kapsamında 10 yıl saklanmaya devam eder; yalnızca kişisel veri unsurları (ad, e-posta) silinir veya anonimleştirilir.</p>
+<p>Kullanıcının KVKK m.11 kapsamındaki kişisel verisinin silinmesi talebi, diğer kullanıcıların (ortak veya çalışan) itirazından bağımsız olarak değerlendirilir. Bir çalışan/ortağın hesaptan çıkarılması halinde, uygulamaya girdiği işlem kayıtları dükkân sahibinin kayıtlarının parçası olarak korunur (KVKK m.5/2-c — sözleşmenin ifasından doğan zorunlu kayıt); bu, maShop&#39;un veriyi &quot;TTK m.82 ile 10 yıl saklaması&quot; anlamına gelmez — böyle bir saklama yapılmaz. Birincil Hesap Sahibi hesabın tamamını sildiğinde ise ticari kayıtlar dahil tüm veriler grace period sonunda sunucudan kalıcı olarak silinir; geriye yalnızca silme işlemine ait denetim kaydı (tarih, silinen kayıt sayısı) KVKK m.7 ve m.12 kapsamında kalır.</p>
 <p><strong>Audit Log Saklama Süresi:</strong></p>
-<p>Hesap yönetimi olaylarına (davet, kabul, rol değişimi, işten çıkar, hesap silme) ait audit kayıtları, ticari belge niteliğinde olmaları nedeniyle <strong>TTK m.82 uyarınca 10 yıl</strong> saklanır.</p>
+<p>Hesap yönetimi olaylarına (davet, kabul, rol değişimi, işten çıkar, hesap silme) ait güvenlik denetim kayıtları, KVKK m.12 hesap verebilirlik ilkesi ve güvenlik amacıyla <strong>365 gün (1 yıl)</strong> saklanır, sonra otomatik olarak silinir. Ticari belge saklaması amaçlanmaz.</p>
 <p><strong>İletişim Kanalı:</strong></p>
 <p>Hesap içi yönetim bildirimleri (silme, kovma, yetki değişikliği) öncelikle uygulama içi push bildirimi olarak iletilir. Kalıcı kanal (e-posta) entegrasyonu sonraki sürümlerde eklenecektir; o zamana kadar kritik bildirimler için kullanıcı periyodik olarak uygulamayı açmalıdır.</p>
 <h3>7. Veri Güvenliği Önlemleri</h3>
@@ -228,6 +234,6 @@ a{color:var(--accent)}
 <hr>
 <p><em>Bu metin 05/06/2026 tarihinde güncellenmiştir. Politikamızda değişiklik olması halinde bu sayfa güncellenir ve uygulama içi bildirim yapılır.</em></p>
 
-<footer>Yayın: 05/06/2026 · Bu sayfa <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a> üzerinden yayınlanır. Kaynak: <code>d6f871a</code>.</footer>
+<footer>Yayın: 05/06/2026 · Bu sayfa <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a> üzerinden yayınlanır. Kaynak: <code>be74193</code>.</footer>
 </body>
 </html>

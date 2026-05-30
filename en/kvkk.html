@@ -143,7 +143,7 @@ a{color:var(--accent)}
 <li>To object to consequences against you resulting from analysis carried out by automated systems</li>
 </ul>
 <p><strong>Data Portability (Art. 11/ğ — automated as of V1.0):</strong>
-Active or access-restricted (14-day grace) users may obtain a machine-readable copy of their data via the in-app <code>Download My Data</code> button in JSON format. After access has been fully removed, requests are made by email.</p>
+Active users and users within the recovery (grace) period may obtain a machine-readable copy of their data via the in-app <code>Download My Data</code> button in JSON format. After access has been fully removed, requests are made by email.</p>
 <p><strong>Application:</strong> You may apply by email to <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a>. Applications are answered within 30 days.</p>
 <h3>5. Data Retention Periods</h3>
 <ul>
@@ -152,6 +152,11 @@ Active or access-restricted (14-day grace) users may obtain a machine-readable c
 <li>Google Sign-In: Until the account is closed</li>
 <li>Firebase log data: According to Firebase policy (typically 90 days)</li>
 <li>Personnel / commission data: During active subscription + 30 days after cancellation</li>
+<li><strong>Account deletion request:</strong> A 30-day grace period after the request; at the end all account data (personal + transaction) is permanently deleted</li>
+<li><strong>Inactive account:</strong> If no login occurs for a continuous 1 year, the account and all its data are permanently deleted (with prior notice)</li>
+<li><strong>Deletion audit record:</strong> Deletion date + number of deleted records; kept under KVKK Art. 7/12 (contains no content/personal data)</li>
+<li><strong>Security audit log:</strong> 365 days, then automatically deleted</li>
+<li>No retention such as 10 years is applied for commercial records (the Article 82 TCC obligation belongs to the user)</li>
 </ul>
 <h3>6. Backup and Multi-User Services</h3>
 <p><strong>Backup (when paid subscription is active):</strong></p>
@@ -204,11 +209,12 @@ Active or access-restricted (14-day grace) users may obtain a machine-readable c
 <li>During this period the Primary Account Holder may withdraw the deletion request.</li>
 <li>When 30 days have passed, all account data is permanently deleted (hard delete).</li>
 </ul>
+<p>In addition, if no user logs in for <strong>a continuous 1 year</strong>, the account is permanently deleted due to inactivity (with reasonable prior notice); if a login occurs within this period the period restarts. In no case does maShop continue to store deleted data on the user&#39;s behalf.</p>
 <p>If partners or employees suffer data loss as a result of account deletion, they must direct their claims to the Primary Account Holder; maShop assumes no liability in this regard.</p>
 <p><strong>Conflict of Data Subject Rights (KVKK Art. 11):</strong></p>
-<p>A user&#39;s request to have their personal data deleted under KVKK Art. 11 is honoured for the relevant personal data independently of any objections by other users (partner or employee). In this case, commercial-nature data (sales records, invoices) continue to be retained for 10 years under Article 82 of the Turkish Commercial Code; only personal data elements (name, email) are deleted or anonymised.</p>
+<p>A user&#39;s request to have their personal data deleted under KVKK Art. 11 is evaluated independently of any objections by other users (partner or employee). When an employee/partner is removed from an account, the transaction records they entered are retained as part of the store owner&#39;s records (KVKK Art. 5/2-c — mandatory record arising from the performance of a contract); this does not mean maShop retains the data &quot;for 10 years under Article 82 TCC&quot; — no such retention is applied. When the Primary Account Holder deletes the entire account, all data including commercial records is permanently deleted from the server at the end of the grace period; only an audit record of the deletion (date, number of deleted records) remains under KVKK Art. 7 and 12.</p>
 <p><strong>Audit Log Retention:</strong></p>
-<p>Audit records of account management events (invitation, acceptance, role change, removal, account deletion) are retained for <strong>10 years</strong> under Article 82 of the Turkish Commercial Code, as they constitute commercial documents.</p>
+<p>Security audit records of account management events (invitation, acceptance, role change, removal, account deletion) are retained for <strong>365 days (1 year)</strong> for the purpose of KVKK Art. 12 accountability and security, then automatically deleted. They are not intended for commercial document retention.</p>
 <p><strong>Communication Channel:</strong></p>
 <p>Account management notifications (deletion, removal, permission change) are primarily delivered as in-app push notifications. A permanent channel (email) integration will be added in subsequent versions; until then, the user must periodically open the app for critical notifications.</p>
 <h3>7. Data Security Measures</h3>
@@ -224,6 +230,6 @@ Active or access-restricted (14-day grace) users may obtain a machine-readable c
 <hr>
 <p><em>This notice was last updated on 06/05/2026. In the event of changes to our policy, this page will be updated and an in-app notification will be issued.</em></p>
 
-<footer>Published: 06/05/2026 · This page is published from <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a>. Source: <code>d6f871a</code>.</footer>
+<footer>Published: 06/05/2026 · This page is published from <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a>. Source: <code>be74193</code>.</footer>
 </body>
 </html>
