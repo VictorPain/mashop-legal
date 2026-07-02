@@ -37,9 +37,9 @@ a{color:var(--accent)}
 <h2>PERSONAL DATA PROTECTION NOTICE UNDER LAW NO. 6698 (&quot;KVKK&quot;)</h2>
 <p><strong>Data Controller:</strong> Fatih Acı
 <strong>Contact:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a>
-<strong>Date:</strong> 06/10/2026</p>
+<strong>Date:</strong> 01/07/2026</p>
 <p>This notice has been prepared pursuant to Article 10 of the Personal Data Protection Law No. 6698 of the Republic of Turkey (&quot;KVKK&quot;).</p>
-<p><strong>Data Controller / Data Processor Distinction.</strong> maShop (Fatih Acı) acts as a <strong>data controller</strong> for the data it collects for <strong>authentication, subscription and device management</strong>. By contrast, with respect to the <strong>customer, supplier and personnel personal data</strong> that users enter into the app themselves, maShop acts as a <strong>data processor</strong> within the meaning of Art. 3 KVKK; the <strong>data controller</strong> for such data is the user who manages the relevant store account. The obligations to provide a privacy notice, establish a lawful basis and respond to data subject requests for this third-party data belong to the <strong>user</strong>; maShop stores/processes such data solely on the user&#39;s behalf and under their instructions, and does not use it for its own purposes.</p>
+<p><strong>Data Controller / Data Processor Distinction.</strong> maShop (Fatih Acı) acts as a <strong>data controller</strong> for the data it collects for <strong>authentication, subscription and device management</strong>. By contrast, with respect to the <strong>customer, supplier and personnel personal data</strong> that users enter into the app themselves, maShop acts as a <strong>data processor</strong> within the meaning of Art. 3 KVKK; the <strong>data controller</strong> for such data is the user who manages the relevant store account. The obligations to provide a privacy notice, establish a lawful basis and respond to data subject requests for this third-party data belong to the <strong>user</strong>; maShop stores/processes such data solely on the user&#39;s behalf and under their instructions, and does not use it for its own purposes. The instructions and terms for this processing are set out in the User Agreement and this notice; as a data processor, maShop takes the necessary technical and administrative measures under Article 12 of KVKK.</p>
 <h3>1. Personal Data Processed and Purposes of Processing</h3>
 <p>The maShop application may process the following personal data:</p>
 <table>
@@ -81,8 +81,8 @@ a{color:var(--accent)}
 <td>Device + our server (mandatory for sync)</td>
 </tr>
 <tr>
-<td>Device identifier, app usage statistics</td>
-<td>App performance and error monitoring (Firebase)</td>
+<td>Device / app instance identifier</td>
+<td>Session and notification infrastructure (Firebase auth + FCM push)</td>
 <td>Firebase / Google servers</td>
 </tr>
 <tr>
@@ -96,64 +96,59 @@ a{color:var(--accent)}
 <td>Google servers</td>
 </tr>
 </tbody></table>
-<p><strong>Data NOT processed:</strong> Payment card information, bank account, location data, contacts, photo/media. Payment transactions take place exclusively via the Google Play / App Store infrastructure; card/bank information is not transmitted to us.</p>
+<p><strong>Data NOT processed:</strong> Payment card information, bank account, location data, contacts, photo/media; also app usage analytics and crash reporting (this telemetry is not currently collected). Payment transactions take place exclusively via the Google Play / App Store infrastructure; card/bank information is not transmitted to us.</p>
 <p><strong>Important:</strong> Transaction data stored under synchronisation and backup is kept on <strong>our own server in Turkey</strong> (Muğla) <strong>on all plans</strong> and is not transferred abroad. However, the servers of essential infrastructure providers such as Google and Apple are located abroad (USA / EU); transfers to such providers are detailed in Section 2.</p>
 <h3>2. Parties to Whom Personal Data Is Transferred (Including Cross-Border Transfers)</h3>
-<p>The servers of the following service providers are located <strong>abroad</strong> (USA / EU); part of your personal data is transferred abroad under Article 9 of KVKK. The transfer takes place within the framework of the providers&#39; global data protection commitments and standard contractual terms, as <strong>mandatory infrastructure service</strong> required for you to use the app:</p>
+<p>The servers of the following service providers are located <strong>abroad</strong> (USA / EU); a limited part of your personal data is transferred abroad under Article 9 of KVKK. <strong>Important notice:</strong> These global providers (Google, Apple) do not sign the standard contract of the Personal Data Protection Board (KVKK); instead they apply their own international data processing terms and transfer commitments. <strong>We have not filed any standard contract with the Board.</strong> The transfer takes place within the scope of a <strong>mandatory infrastructure service</strong> required for the app to function, and, for <strong>optional</strong> processing such as advertising, on the basis of your <strong>explicit consent</strong>:</p>
 <table>
 <thead>
 <tr>
 <th>Service Provider</th>
 <th>Transferred Data</th>
 <th>Server Location</th>
-<th>Data Protection Framework</th>
+<th>Note / Framework</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Google LLC (Firebase)</td>
-<td>Device identifier, usage statistics, error logs</td>
+<td>Google LLC (Firebase — FCM push)</td>
+<td>Push notification token</td>
 <td>USA / EU</td>
-<td>Google DPA + SCC</td>
+<td>Required for the performance of the notification service; Google&#39;s own international data processing terms</td>
 </tr>
 <tr>
 <td>Google LLC (Sign-In)</td>
 <td>Name, email</td>
 <td>USA / EU</td>
-<td>Google DPA + SCC</td>
+<td>Only if you choose &quot;Sign in with Google&quot;; a login you initiate. Google&#39;s own data processing terms</td>
 </tr>
 <tr>
 <td>Apple Inc. (Sign-In)</td>
 <td>Name, email (real or <code>xxx@privaterelay.appleid.com</code>)</td>
 <td>USA / Ireland</td>
-<td>Apple DPA</td>
+<td>Only if you choose &quot;Sign in with Apple&quot;; Apple&#39;s own data processing terms</td>
 </tr>
 <tr>
-<td>Apple Inc. (App Store)</td>
-<td>Subscription and payment transaction information</td>
-<td>USA / Ireland</td>
-<td>Apple DPA</td>
-</tr>
-<tr>
-<td>Google LLC (Play Store)</td>
-<td>Subscription and payment transaction information</td>
-<td>USA / EU</td>
-<td>Google DPA</td>
+<td>Apple Inc. (App Store) / Google LLC (Play Store)</td>
+<td>Subscription/transaction status (receipt)</td>
+<td>USA / Ireland-EU</td>
+<td><strong>The store collects the payment directly (merchant of record); card/bank information is not transmitted to us</strong> — this transfer is not performed by maShop</td>
 </tr>
 <tr>
 <td>Google LLC (AdMob)</td>
 <td>Device advertising identifier, approximate region derived from IP, ad interaction events</td>
 <td>USA / EU</td>
-<td>Google DPA + SCC</td>
+<td>Only with your <strong>explicit consent (opt-in)</strong> and <strong>non-personalized</strong>; you may turn it off at any time</td>
 </tr>
 </tbody></table>
 <p><strong>Personal data is not shared with third parties for commercial purposes.</strong> The advertising provider (AdMob) processes only limited technical data to serve <strong>non-personalized</strong> ads; no profiling/behavioral targeting is performed and personal data is not sold for advertising purposes.</p>
+<p><strong>Potential risks of cross-border transfer (KVKK Art. 9/6-a):</strong> In the country to which your data is transferred there may not be a level of data protection equivalent to KVKK, and it may become more difficult for you to exercise your rights as a data subject. Non-mandatory transfers (e.g. advertising) rely solely on your <strong>explicit consent</strong>, which you may withdraw at any time from the app settings. Transfers that are mandatory for the service to function, such as login and notifications, are necessary for you to use the app.</p>
 <p><strong>Domestic storage:</strong> The synchronised copy and backups of your transaction data are kept on <strong>our own server in Turkey (Muğla)</strong> and are not transferred abroad. Details: Section 6.</p>
 <h3>3. Method of Collection and Legal Basis</h3>
 <p>Your personal data is collected via your login and registration actions within the app, Google or Apple Sign-In (OAuth) and automatic system records (Firebase).</p>
 <p><strong>Legal bases:</strong></p>
 <ul>
 <li><strong>KVKK Art. 5/2-c (conclusion and performance of a contract):</strong> The core function of the app, the cross-device synchronisation and backup service, and the delivery of in-app notifications fall under this basis.</li>
-<li><strong>KVKK Art. 5/2-f (legitimate interest):</strong> Error monitoring and performance analysis (Firebase) fall under this basis. In addition, <strong>non-personalized</strong>, opt-in rewarded ads (Google AdMob) shown to sustain the free plan fall under this basis; as the ads are not personalized, no profiling is performed and the user is free to choose whether to watch an ad.</li>
+<li><strong>KVKK Art. 5/1 (explicit consent) + Art. 9/6-a (cross-border transfer):</strong> The <strong>non-personalized</strong>, opt-in rewarded ads (Google AdMob) shown to sustain the free plan, and the associated cross-border transfer, rely on your <strong>explicit consent</strong>; as the ads are not personalized, no profiling is performed, and you may turn off the ads and withdraw your consent at any time. (Note: as app usage analytics / crash reporting are not currently collected, no processing is carried out for such telemetry.)</li>
 </ul>
 <h3>4. Your Rights as a Data Subject (KVKK Article 11)</h3>
 <p>Pursuant to Article 11 of KVKK you have the following rights:</p>
@@ -178,7 +173,7 @@ Active users and users within the recovery (grace) period may obtain a machine-r
 <li>Push notification token: Deleted from our server when you log out or when your account is deleted</li>
 <li>Personnel / commission data: For as long as the account remains open (subject to the same rules as transaction data)</li>
 <li><strong>Account deletion request:</strong> A 30-day grace period after the request; at the end all account data (personal + transaction) is permanently deleted</li>
-<li><strong>Inactive account:</strong> If no login occurs for a continuous 1 year, the account and all its data are permanently deleted (with prior notice)</li>
+<li><strong>Inactive account:</strong> If no login occurs for a continuous 1 year, the account and all its data are permanently deleted; before deletion, in-app notification is provided and reasonable effort is made to reach you (a permanent email notification channel will be added in subsequent versions)</li>
 <li><strong>Deletion audit record:</strong> Deletion date + number of deleted records; kept under KVKK Art. 7/12 (contains no content/personal data)</li>
 <li><strong>Security audit log:</strong> 365 days, then automatically deleted</li>
 <li>No retention such as 10 years is applied for commercial records (the Article 82 TCC obligation belongs to the user)</li>
@@ -246,8 +241,8 @@ Active users and users within the recovery (grace) period may obtain a machine-r
 <li><strong>Data breach notification:</strong> Notification to the Authority and affected data subjects within 72 hours under KVKK Art. 12/5</li>
 </ul>
 <hr>
-<p><em>This notice was last updated on 06/10/2026 (v4 — synchronisation and retention periods aligned with actual app behaviour). In the event of changes to our policy, this page will be updated and an in-app notification will be issued.</em></p>
+<p><em>This notice was last updated on 01/07/2026 (v5 — legal correction of the Article 9 cross-border transfer basis under KVKK: express declaration that no standard contract has been filed with the Board, explicit consent for AdMob, cross-border transfer risk notice, merchant-of-record framing for the Store, and alignment of Firebase telemetry). In the event of changes to our policy, this page will be updated and an in-app notification will be issued.</em></p>
 
-<footer>Published: 06/05/2026 · This page is published from <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a>. Source: <code>7dba4b6</code>.</footer>
+<footer>Published: 06/05/2026 · This page is published from <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a>. Source: <code>e11956f</code>.</footer>
 </body>
 </html>

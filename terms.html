@@ -44,13 +44,13 @@ a{color:var(--accent)}
 <ul>
 <li>Uygulama 21 günlük ücretsiz deneme süresi sunar.</li>
 <li>Deneme süresi sonunda, iptal edilmemişse abonelik otomatik olarak ücretli döneme geçer.</li>
-<li>Ücretler Google Play veya App Store tarafından tahsil edilir.</li>
+<li>Ücretler doğrudan Google Play veya App Store tarafından tahsil edilir (ilgili mağaza <em>merchant of record</em> sıfatıyla hareket eder); ödeme kartı/banka bilginiz tarafımıza iletilmez.</li>
 <li>İptal işlemi Google Play / App Store hesap ayarlarından yapılabilir.</li>
 <li>Geçmiş abonelik ücretleri iade edilmez; ilgili store&#39;un iade politikası geçerlidir.</li>
 </ul>
 <hr>
 <h3>Madde 3 — Kullanıcı Verileri ve Gizlilik</h3>
-<p>Gizlilik uygulamalarımız için lütfen <a href="privacy.html">Gizlilik Politikası&#39;nı</a> inceleyin.</p>
+<p>Gizlilik uygulamalarımız için lütfen <a href="#">Gizlilik Politikası&#39;nı</a> inceleyin.</p>
 <p><strong>3.1 Yedekleme ve Çoklu Cihaz Davranışı.</strong> Kullanıcı verileri öncelikle cihazda (yerel SQLite) saklanır; sunucu yedeği ve cihazlar arası senkronizasyon planınıza göre değişir:</p>
 <ul>
 <li><strong>Free ve Solo planlarda tek cihaz politikası uygulanır.</strong> Yeni bir cihazdan oturum açıldığında önceki cihazın oturumu otomatik sonlandırılır. Bu davranış kullanıcının verisini kaybetmez; sunucudaki en son yedek korunur.</li>
@@ -60,7 +60,7 @@ a{color:var(--accent)}
 <p><strong>3.3 Hesap Silme ve Saklama — KVKK Madde 11.</strong> Hesabınız ve verileriniz iki durumda kalıcı olarak silinir:</p>
 <ul>
 <li><strong>(a) Silme talebiniz üzerine:</strong> 30 günlük geri alma süresi (grace period) başlar; bu süre içinde hesabınızı geri kazanabilirsiniz. Süre sonunda hesaba ait <strong>tüm veriler</strong> (kişisel veriler ve satış, alış, gider, kasa, personel dahil tüm işlem kayıtları) sunucudan <strong>kalıcı olarak silinir (hard-delete)</strong>.</li>
-<li><strong>(b) İnaktiflik nedeniyle:</strong> Hesaba <strong>kesintisiz 1 yıl</strong> boyunca hiç giriş yapılmazsa hesap ve tüm verileri kalıcı olarak silinir. Silme öncesinde makul süre önce bilgilendirme yapılır; bu süre içinde giriş yaparsanız hesabınız korunur ve süre yeniden başlar (sezonluk kullanımda yıl içinde dönerseniz kaldığınız yerden devam edersiniz).</li>
+<li><strong>(b) İnaktiflik nedeniyle:</strong> Hesaba <strong>kesintisiz 1 yıl</strong> boyunca hiç giriş yapılmazsa hesap ve tüm verileri kalıcı olarak silinir. Silme öncesinde uygulama içinde bilgilendirme yapılır ve size ulaşmak için makul çaba gösterilir (kalıcı e-posta bildirim kanalı sonraki sürümlerde eklenecektir); bu süre içinde giriş yaparsanız hesabınız korunur ve süre yeniden başlar (sezonluk kullanımda yıl içinde dönerseniz kaldığınız yerden devam edersiniz).</li>
 </ul>
 <p>Her iki durumda da maShop bu verileri kullanıcı adına saklamaya devam etmez; ticari kayıtlar için 10 yıl gibi bir saklama <strong>yapılmaz</strong>. Vergi ve ticaret mevzuatından (TTK m.82 dahil) doğan kendi saklama yükümlülükleriniz size aittir; bu nedenle silmeden önce <em>Ayarlar → Verilerimi İndir</em> ile kayıtlarınızın kopyasını almanız önerilir. Silme geri alınamaz. Geriye yalnızca silme işleminin gerçekleştiğine dair denetim kaydı (tarih ve silinen kayıt sayısı) KVKK m.7 ve m.12 kapsamında tutulur.</p>
 <hr>
@@ -99,7 +99,7 @@ a{color:var(--accent)}
 <p><strong>8.3 Yetki Asimetrisi.</strong> Ortak rolündeki kullanıcı Birincil Hesap Sahibine <strong>eşdeğer veri erişimine</strong> sahiptir ancak hesap yönetimi yetkisi <strong>yoktur</strong>. Birincil Hesap Sahibi, ortağa verilen yetkileri (analiz görme, derin analiz, personel sayfası, kasa hareketi silme) bireysel olarak kısıtlayabilir.</p>
 <p><strong>8.4 Hesap Silme Akışı.</strong> Birincil Hesap Sahibinin hesap silme talebi 30 günlük geri alma süresi (grace period) başlatır. Bu süre içinde hesap soft delete durumdadır; süre dolduğunda hesaba ait tüm veriler kalıcı silinir. Ayrıca hesaba <strong>kesintisiz 1 yıl</strong> giriş yapılmazsa hesap, madde 3.3(b) uyarınca (silme öncesi bilgilendirme ile) inaktiflik nedeniyle kalıcı silinir. Ortak ve çalışanlara uygulama içi anlık bildirim gönderilir; aktif itiraz hakkı yoktur. Veri kaybı durumunda taraflar arası anlaşmazlık Birincil Hesap Sahibi ile ortak/çalışan arasındadır; maShop bu uyuşmazlıkta taraf değildir.</p>
 <p><strong>8.5 Anlaşmazlık ve Tasfiye.</strong> Ortak ile Birincil Hesap Sahibi arasında ticari ortaklık veya kişisel anlaşmazlık durumunda maShop tarafsız kalır ve hesap üzerinde herhangi bir tarafa yönlendirme yapmaz. Hesabın veri/maddi yönetimi tarafların kendi aralarındaki sözleşme (varsa) veya yargı kararıyla çözülür.</p>
-<p><strong>8.6 Veri Sahibi Hakları (KVKK m.11).</strong> Kullanıcının kendi kişisel verisinin silinmesi talebi, hesabın diğer kullanıcılarının itirazından bağımsız olarak yerine getirilir. Birincil Hesap Sahibi hesabı sildiğinde, ticari kayıtlar dahil hesaba ait tüm veriler grace period sonunda kalıcı olarak silinir; maShop bu verileri kullanıcı adına saklamaya devam etmez. Vergi/ticaret mevzuatından doğan saklama yükümlülüğü kullanıcıya ait olup, silme öncesinde dışa aktarım imkânı sunulur. Kullanıcının uygulamaya girdiği üçüncü kişi (müşteri, tedarikçi, personel) kişisel verileri bakımından maShop <strong>veri işleyen</strong>, kullanıcı <strong>veri sorumlusu</strong> sıfatındadır; bu verilere ilişkin aydınlatma ve hukuki dayanak sağlama yükümlülüğü kullanıcıya aittir (bkz. KVKK Aydınlatma Metni).</p>
+<p><strong>8.6 Veri Sahibi Hakları (KVKK m.11).</strong> Kullanıcının kendi kişisel verisinin silinmesi talebi, hesabın diğer kullanıcılarının itirazından bağımsız olarak yerine getirilir. Birincil Hesap Sahibi hesabı sildiğinde, ticari kayıtlar dahil hesaba ait tüm veriler grace period sonunda kalıcı olarak silinir; maShop bu verileri kullanıcı adına saklamaya devam etmez. Vergi/ticaret mevzuatından doğan saklama yükümlülüğü kullanıcıya ait olup, silme öncesinde dışa aktarım imkânı sunulur. Kullanıcının uygulamaya girdiği üçüncü kişi (müşteri, tedarikçi, personel) kişisel verileri bakımından maShop <strong>veri işleyen</strong>, kullanıcı <strong>veri sorumlusu</strong> sıfatındadır; bu verilere ilişkin aydınlatma ve hukuki dayanak sağlama yükümlülüğü kullanıcıya aittir (bkz. KVKK Aydınlatma Metni). Bu işlemeye ilişkin talimat ve şartlar işbu Sözleşme ve KVKK Aydınlatma Metni ile belirlenir; maShop, veri işleyen sıfatıyla KVKK m.12 kapsamında gerekli teknik ve idari tedbirleri alır.</p>
 <p><strong>8.7 Sahip Devri (sonraki sürümlere ertelenen özellik).</strong> Birincil Hesap Sahipliğinin başka bir kullanıcıya devredilmesi (vefat, emeklilik veya kişisel tercih nedeniyle) <strong>bu sürümde</strong> uygulama içinde mümkün değildir; sonraki sürümlerde &quot;varis atama&quot; mekanizması ile eklenecektir. O zamana kadar hesap sahibinin erişim kaybı durumunda kullanıcı doğrudan maShop destek ile iletişime geçmelidir.</p>
 <p><strong>8.8 Hizmet Sağlayıcının Tarafsızlığı.</strong> maShop, hesap içindeki kullanıcılar arasındaki uyuşmazlıklarda <strong>arabuluculuk yapmaz</strong>. Birincil Hesap Sahibinin aldığı kararlar maShop tarafından bağlayıcı kabul edilir.</p>
 <hr>
@@ -116,13 +116,13 @@ a{color:var(--accent)}
 </li>
 <li><p><strong>Financial Disclaimer:</strong> All calculations shown in maShop (profit, loss, costs, totals) are <strong>approximate estimates for informational purposes only</strong>. They are not financial advice, accounting services, or official records. Do not use in-app calculations as the sole basis for tax filings, financial reporting, or legal proceedings. The developer is not liable for any financial decisions made based on in-app data.</p>
 </li>
-<li><p><strong>Data:</strong> Your transaction data is stored on your device (in the operating system&#39;s protected app sandbox) and synchronized with our server in Turkey over an encrypted connection (TLS 1.3); server-side backups are encrypted at rest (AES-256). See our Privacy Policy for details.</p>
+<li><p><strong>Data:</strong> Your transaction data is stored on your device and synchronized with our server in Turkey (encrypted in transit and at rest). See our Privacy Policy for details.</p>
 </li>
 <li><p><strong>Governing Law:</strong> These terms are governed by the laws of the Republic of Turkey.</p>
 </li>
 </ol>
 <p><strong>Contact:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a></p>
 
-<footer>Yayın: 05/06/2026 · Bu sayfa <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a> üzerinden yayınlanır. Kaynak: <code>7dba4b6</code>.</footer>
+<footer>Yayın: 05/06/2026 · Bu sayfa <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a> üzerinden yayınlanır. Kaynak: <code>e11956f</code>.</footer>
 </body>
 </html>

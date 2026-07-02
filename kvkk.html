@@ -34,9 +34,9 @@ a{color:var(--accent)}
 <nav><a href="index.html">⬅ Ana sayfa</a><a href="privacy.html">Gizlilik</a><a aria-current="page" style="background:var(--accent);color:var(--bg)">KVKK Aydınlatma</a><a href="terms.html">Kullanıcı Sözleşmesi</a><a class="lang" href="en/kvkk.html">🇬🇧 English</a></nav>
 <hr>
 <h2>KİŞİSEL VERİLERİN KORUNMASI KANUNU KAPSAMINDA AYDINLATMA METNİ</h2>
-<p><strong>Veri Sorumlusu:</strong> Fatih Acı<br><strong>İletişim:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a><br><strong>Tarih:</strong> 10/06/2026</p>
+<p><strong>Veri Sorumlusu:</strong> Fatih Acı<br><strong>İletişim:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a><br><strong>Tarih:</strong> 01/07/2026</p>
 <p>Bu aydınlatma metni, 6698 sayılı Kişisel Verilerin Korunması Kanunu&#39;nun 10. maddesi uyarınca hazırlanmıştır.</p>
-<p><strong>Veri Sorumlusu / Veri İşleyen Ayrımı.</strong> maShop (Fatih Acı), kullanıcıların <strong>kimlik doğrulaması, abonelik ve cihaz yönetimi</strong> için topladığı verilerde <strong>veri sorumlusu</strong> sıfatıyla hareket eder. Buna karşılık, kullanıcıların uygulamaya kendi girdikleri <strong>müşteri, tedarikçi ve personel kişisel verileri</strong> bakımından maShop, KVKK m.3 anlamında <strong>veri işleyen</strong> sıfatındadır; bu verilerin <strong>veri sorumlusu</strong>, ilgili dükkân hesabını yöneten kullanıcıdır. Bu üçüncü kişi verilerine ilişkin aydınlatma yapma, hukuki dayanak sağlama ve ilgili kişi başvurularını karşılama yükümlülüğü <strong>kullanıcıya</strong> aittir; maShop bu verileri yalnızca kullanıcı adına ve onun talimatı doğrultusunda saklar/işler, kendi amaçları için kullanmaz.</p>
+<p><strong>Veri Sorumlusu / Veri İşleyen Ayrımı.</strong> maShop (Fatih Acı), kullanıcıların <strong>kimlik doğrulaması, abonelik ve cihaz yönetimi</strong> için topladığı verilerde <strong>veri sorumlusu</strong> sıfatıyla hareket eder. Buna karşılık, kullanıcıların uygulamaya kendi girdikleri <strong>müşteri, tedarikçi ve personel kişisel verileri</strong> bakımından maShop, KVKK m.3 anlamında <strong>veri işleyen</strong> sıfatındadır; bu verilerin <strong>veri sorumlusu</strong>, ilgili dükkân hesabını yöneten kullanıcıdır. Bu üçüncü kişi verilerine ilişkin aydınlatma yapma, hukuki dayanak sağlama ve ilgili kişi başvurularını karşılama yükümlülüğü <strong>kullanıcıya</strong> aittir; maShop bu verileri yalnızca kullanıcı adına ve onun talimatı doğrultusunda saklar/işler, kendi amaçları için kullanmaz. Bu işlemeye ilişkin talimat ve şartlar, Kullanıcı Sözleşmesi ve işbu aydınlatma metni ile belirlenir; maShop, veri işleyen sıfatıyla KVKK m.12 kapsamında gerekli teknik ve idari tedbirleri alır.</p>
 <h3>1. İşlenen Kişisel Veriler ve İşleme Amaçları</h3>
 <p>maShop uygulaması aşağıdaki kişisel verileri işleyebilir:</p>
 <table>
@@ -78,8 +78,8 @@ a{color:var(--accent)}
 <td>Cihaz + sunucumuz (senkron için zorunlu)</td>
 </tr>
 <tr>
-<td>Cihaz tanımlayıcısı, uygulama kullanım istatistikleri</td>
-<td>Uygulama performansı ve hata izleme (Firebase)</td>
+<td>Cihaz/uygulama örneği tanımlayıcısı</td>
+<td>Oturum ve bildirim altyapısı (Firebase auth + FCM push)</td>
 <td>Firebase/Google sunucuları</td>
 </tr>
 <tr>
@@ -93,57 +93,52 @@ a{color:var(--accent)}
 <td>Google sunucuları</td>
 </tr>
 </tbody></table>
-<p><strong>İşlenmeyen veriler:</strong> Ödeme kartı bilgisi, banka hesabı, konum verisi, rehber erişimi, fotoğraf/medya. Ödeme işlemleri yalnızca Google Play / App Store altyapısı üzerinden gerçekleşir; kart/banka bilgisi tarafımıza iletilmez.</p>
+<p><strong>İşlenmeyen veriler:</strong> Ödeme kartı bilgisi, banka hesabı, konum verisi, rehber erişimi, fotoğraf/medya; ayrıca uygulama kullanım analitiği ve çökme raporlaması (bu telemetri şu an toplanmamaktadır). Ödeme işlemleri yalnızca Google Play / App Store altyapısı üzerinden gerçekleşir; kart/banka bilgisi tarafımıza iletilmez.</p>
 <p><strong>Önemli:</strong> Senkronizasyon ve yedekleme kapsamında saklanan işlem verileriniz <strong>tüm planlarda Türkiye&#39;deki kendi sunucumuzda</strong> (Muğla) tutulur, yurt dışına aktarılmaz. Ancak Google ve Apple gibi temel altyapı sağlayıcıların sunucuları yurt dışındadır (ABD/AB); bu sağlayıcılarla aktarım Madde 2&#39;de detaylandırılmıştır.</p>
 <h3>2. Kişisel Verilerin Aktarıldığı Taraflar (Yurt Dışı Aktarım Dahil)</h3>
-<p>Aşağıdaki hizmet sağlayıcıların sunucuları <strong>yurt dışında</strong> (ABD/AB) bulunmaktadır; kişisel verilerinizin bir kısmı KVKK m.9 kapsamında yurt dışına aktarılmaktadır. Aktarım, sağlayıcıların küresel veri koruma taahhütleri ve standart sözleşme hükümleri çerçevesinde, uygulamayı kullanmanız için <strong>zorunlu altyapı hizmeti</strong> olarak gerçekleşir:</p>
+<p>Aşağıdaki hizmet sağlayıcıların sunucuları <strong>yurt dışında</strong> (ABD/AB) bulunmaktadır; kişisel verilerinizin sınırlı bir kısmı KVKK m.9 kapsamında yurt dışına aktarılmaktadır. <strong>Önemli bilgilendirme:</strong> Bu küresel sağlayıcılar (Google, Apple), Kişisel Verileri Koruma Kurulu&#39;nun standart sözleşmesini imzalamamakta; bunun yerine kendi uluslararası veri işleme şartlarını ve aktarım taahhütlerini uygulamaktadır. <strong>Tarafımızca Kurul&#39;a bildirilmiş bir standart sözleşme bulunmamaktadır.</strong> Aktarım, uygulamanın çalışması için <strong>zorunlu altyapı hizmeti</strong> kapsamında ve reklam gibi <strong>isteğe bağlı</strong> işlemlerde <strong>açık rızanıza</strong> dayanılarak gerçekleşir:</p>
 <table>
 <thead>
 <tr>
 <th>Hizmet Sağlayıcı</th>
 <th>Aktarılan Veri</th>
 <th>Sunucu Konumu</th>
-<th>Veri Koruma Çerçevesi</th>
+<th>Not / Çerçeve</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Google LLC (Firebase)</td>
-<td>Cihaz tanımlayıcısı, kullanım istatistikleri, hata logları</td>
+<td>Google LLC (Firebase — FCM push)</td>
+<td>Push bildirim token&#39;ı</td>
 <td>ABD / AB</td>
-<td>Google DPA + SCC</td>
+<td>Bildirim hizmetinin ifası için gerekli; Google&#39;ın kendi uluslararası veri işleme şartları</td>
 </tr>
 <tr>
 <td>Google LLC (Sign-In)</td>
 <td>Ad, e-posta</td>
 <td>ABD / AB</td>
-<td>Google DPA + SCC</td>
+<td>Yalnızca &quot;Google ile giriş&quot;i seçerseniz; sizin başlattığınız giriş işlemi. Google&#39;ın kendi veri işleme şartları</td>
 </tr>
 <tr>
 <td>Apple Inc. (Sign-In)</td>
 <td>Ad, e-posta (gerçek veya <code>xxx@privaterelay.appleid.com</code>)</td>
 <td>ABD / İrlanda</td>
-<td>Apple DPA</td>
+<td>Yalnızca &quot;Apple ile giriş&quot;i seçerseniz; Apple&#39;ın kendi veri işleme şartları</td>
 </tr>
 <tr>
-<td>Apple Inc. (App Store)</td>
-<td>Abonelik ve ödeme işlem bilgileri</td>
-<td>ABD / İrlanda</td>
-<td>Apple DPA</td>
-</tr>
-<tr>
-<td>Google LLC (Play Store)</td>
-<td>Abonelik ve ödeme işlem bilgileri</td>
-<td>ABD / AB</td>
-<td>Google DPA</td>
+<td>Apple Inc. (App Store) / Google LLC (Play Store)</td>
+<td>Abonelik/işlem durumu (makbuz)</td>
+<td>ABD / İrlanda-AB</td>
+<td><strong>Ödemeyi doğrudan mağaza tahsil eder (merchant of record); kart/banka bilgisi tarafımıza iletilmez</strong> — bu aktarım maShop tarafından yapılmaz</td>
 </tr>
 <tr>
 <td>Google LLC (AdMob)</td>
 <td>Cihaz reklam kimliği, IP&#39;den türetilen yaklaşık bölge, reklam etkileşim olayları</td>
 <td>ABD / AB</td>
-<td>Google DPA + SCC</td>
+<td>Yalnızca <strong>açık rızanızla (opt-in)</strong> ve <strong>kişiselleştirilmemiş</strong>; istediğiniz an kapatabilirsiniz</td>
 </tr>
 </tbody></table>
 <p><strong>Üçüncü taraflarla ticari amaçlarla veri paylaşılmamaktadır.</strong> Reklam altyapısı (AdMob) yalnızca <strong>kişiselleştirilmemiş</strong> reklam sunmak için sınırlı teknik veri işler; profilleme/davranışsal hedefleme yapılmaz, kişisel veri reklam amaçlı satılmaz.</p>
+<p><strong>Yurt dışına aktarımın olası riskleri (KVKK m.9/6-a):</strong> Verinizin aktarıldığı ülkede KVKK ile aynı düzeyde bir veri koruması bulunmayabilir ve veri sahibi olarak haklarınızı kullanmanız güçleşebilir. Zorunlu olmayan (reklam vb.) aktarımlar yalnızca <strong>açık rızanıza</strong> dayanır; bu rızayı istediğiniz zaman uygulama ayarlarından geri alabilirsiniz. Giriş ve bildirim gibi hizmetin çalışması için zorunlu aktarımlar ise uygulamayı kullanabilmeniz için gereklidir.</p>
 <p><strong>Apple Sign-In Private Email Relay:</strong> Apple ile giriş seçeneğinde kullanıcı, gerçek e-posta adresi yerine Apple tarafından oluşturulan <code>xxx@privaterelay.appleid.com</code> formatındaki anonim adresi paylaşmayı tercih edebilir. Bu durumda tarafınıza gönderilen ileti Apple sunucuları aracılığıyla gerçek adresinize iletilir; biz gerçek adresinizi göremeyiz. Bu tercihinizi istediğiniz zaman Apple ID ayarlarından geri alabilirsiniz.</p>
 <p><strong>Yurt içi saklama:</strong> İşlem verilerinizin senkron kopyası ve yedekleri <strong>Türkiye&#39;deki kendi sunucumuzda (Muğla)</strong> tutulur, yurt dışına aktarılmaz. Detay: Madde 6.</p>
 <h3>3. Kişisel Verilerin Toplanma Yöntemi ve Hukuki Dayanağı</h3>
@@ -151,7 +146,7 @@ a{color:var(--accent)}
 <p><strong>Hukuki dayanak:</strong></p>
 <ul>
 <li><strong>KVKK md. 5/2-c (sözleşmenin kurulması ve ifası):</strong> Uygulamanın temel işlevi, cihazlar arası senkronizasyon ve yedekleme hizmeti ile uygulama içi bildirimlerin iletilmesi bu kapsamdadır.</li>
-<li><strong>KVKK md. 5/2-f (meşru menfaat):</strong> Hata izleme ve performans analizi (Firebase) bu kapsamdadır. Ayrıca ücretsiz planın sürdürülebilirliği için gösterilen <strong>kişiselleştirilmemiş</strong>, isteğe bağlı (opt-in) ödüllü reklam (Google AdMob) bu kapsamdadır; reklamlar kişiselleştirilmediği için profilleme yapılmaz ve kullanıcı reklamı izleyip izlememekte serbesttir.</li>
+<li><strong>KVKK md. 5/1 (açık rıza) + md. 9/6-a (yurt dışı aktarım):</strong> Ücretsiz planın sürdürülebilirliği için gösterilen <strong>kişiselleştirilmemiş</strong>, isteğe bağlı (opt-in) ödüllü reklam (Google AdMob) ve buna bağlı yurt dışı aktarım <strong>açık rızanıza</strong> dayanır; reklamlar kişiselleştirilmediği için profilleme yapılmaz, reklamı istediğiniz zaman kapatabilir ve rızanızı geri alabilirsiniz. (Not: uygulama kullanım analitiği / çökme raporlaması şu an toplanmadığından bu telemetri için bir işleme yapılmamaktadır.)</li>
 </ul>
 <h3>4. Veri Sahibi Olarak Haklarınız (KVKK Madde 11)</h3>
 <p>KVKK&#39;nın 11. maddesi kapsamında aşağıdaki haklara sahipsiniz:</p>
@@ -176,7 +171,7 @@ a{color:var(--accent)}
 <li>Push bildirim token&#39;ı: Uygulamadan çıkış (logout) yaptığınızda veya hesabınız silindiğinde sunucumuzdan silinir</li>
 <li>Personel / komisyon verileri: Hesap açık olduğu sürece (işlem verileriyle aynı kurallara tabidir)</li>
 <li><strong>Hesap silme talebi:</strong> Talepten sonra 30 günlük geri alma süresi; süre sonunda hesaba ait tüm veriler (kişisel + işlem) kalıcı silinir</li>
-<li><strong>İnaktif hesap:</strong> Hesaba kesintisiz 1 yıl giriş yapılmazsa hesap ve tüm verileri kalıcı silinir (silme öncesi bilgilendirme yapılır)</li>
+<li><strong>İnaktif hesap:</strong> Hesaba kesintisiz 1 yıl giriş yapılmazsa hesap ve tüm verileri kalıcı silinir; silme öncesinde uygulama içinde bilgilendirme yapılır ve size ulaşmak için makul çaba gösterilir (kalıcı e-posta bildirim kanalı sonraki sürümlerde eklenecektir)</li>
 <li><strong>Silme denetim kaydı:</strong> Silme tarihi + silinen kayıt sayısı; KVKK m.7/m.12 kapsamında tutulur (içerik/kişisel veri içermez)</li>
 <li><strong>Güvenlik denetim logu (audit):</strong> 365 gün, sonra otomatik silinir</li>
 <li>Ticari kayıtlar için 10 yıl gibi bir saklama <strong>yapılmaz</strong> (TTK m.82 yükümlülüğü kullanıcının kendisine aittir)</li>
@@ -244,8 +239,8 @@ a{color:var(--accent)}
 <li><strong>Veri ihlali bildirimi:</strong> KVKK m.12/5 kapsamında 72 saat içinde Kurul ve etkilenen veri sahiplerine bildirim yapılır</li>
 </ul>
 <hr>
-<p><em>Bu metin 10/06/2026 tarihinde güncellenmiştir (v4 — senkronizasyon ve saklama sürelerinin uygulama davranışıyla hizalanması). Politikamızda değişiklik olması halinde bu sayfa güncellenir ve uygulama içi bildirim yapılır.</em></p>
+<p><em>Bu metin 01/07/2026 tarihinde güncellenmiştir (v5 — KVKK m.9 yurt dışı aktarım dayanağının hukuki düzeltmesi: Kurul&#39;a bildirilmiş standart sözleşme bulunmadığının açık beyanı, AdMob için açık rıza, aktarım risk uyarısı, Store merchant-of-record çerçevesi ve Firebase telemetri hizalaması). Politikamızda değişiklik olması halinde bu sayfa güncellenir ve uygulama içi bildirim yapılır.</em></p>
 
-<footer>Yayın: 05/06/2026 · Bu sayfa <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a> üzerinden yayınlanır. Kaynak: <code>7dba4b6</code>.</footer>
+<footer>Yayın: 05/06/2026 · Bu sayfa <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a> üzerinden yayınlanır. Kaynak: <code>e11956f</code>.</footer>
 </body>
 </html>
