@@ -19,6 +19,8 @@ const PAGES = [
   { tip: 'privacy', dil: 'en', src: 'privacy-policy-en.md',         title: 'maShop — Privacy Policy',        out: 'en/privacy.html' },
   { tip: 'kvkk',    dil: 'en', src: 'kvkk-aydinlatma-metni-en.md',  title: 'maShop — Personal Data Notice',  out: 'en/kvkk.html' },
   { tip: 'terms',   dil: 'en', src: 'kullanici-sozlesmesi-en.md',   title: 'maShop — Terms of Service',      out: 'en/terms.html' },
+  { tip: 'delete',  dil: 'tr', src: 'hesap-silme-tr.md',           title: 'maShop — Hesap ve Veri Silme',   out: 'delete.html' },
+  { tip: 'delete',  dil: 'en', src: 'hesap-silme-en.md',           title: 'maShop — Account Deletion',      out: 'en/delete.html' },
 ];
 
 const STYLE = `
@@ -86,8 +88,8 @@ function mdToHtml(md) {
 
 function nav(currentTip, currentDil) {
   const tips = {
-    tr: { privacy:'Gizlilik', kvkk:'KVKK Aydınlatma', terms:'Kullanıcı Sözleşmesi' },
-    en: { privacy:'Privacy',  kvkk:'KVKK Notice',     terms:'Terms of Service' }
+    tr: { privacy:'Gizlilik', kvkk:'KVKK Aydınlatma', terms:'Kullanıcı Sözleşmesi', delete:'Hesap Silme' },
+    en: { privacy:'Privacy',  kvkk:'KVKK Notice',     terms:'Terms of Service',      delete:'Account Deletion' }
   };
   const items = Object.entries(tips[currentDil]).map(([t, label]) => {
     if (t === currentTip) return `<a aria-current="page" style="background:var(--accent);color:var(--bg)">${label}</a>`;
@@ -151,6 +153,7 @@ ${STYLE}
   <a href="privacy.html">Gizlilik Politikası</a>
   <a href="kvkk.html">KVKK Aydınlatma Metni</a>
   <a href="terms.html">Kullanıcı Sözleşmesi</a>
+  <a href="delete.html">Hesap ve Veri Silme</a>
 </nav>
 
 <h2>🇬🇧 English</h2>
@@ -158,6 +161,7 @@ ${STYLE}
   <a href="en/privacy.html">Privacy Policy</a>
   <a href="en/kvkk.html">Personal Data Notice (KVKK)</a>
   <a href="en/terms.html">Terms of Service</a>
+  <a href="en/delete.html">Account and Data Deletion</a>
 </nav>
 
 <h2>İletişim / Contact</h2>
