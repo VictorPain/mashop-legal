@@ -104,16 +104,35 @@ function nav(currentTip, currentDil) {
   return `<nav>${homeLink}${items.join('')}${langLink}</nav>`;
 }
 
-function footer(dil, commitHash) {
-  const tarih = dil === 'tr' ? 'Yayın: 05/06/2026' : 'Published: 06/05/2026';
+/**
+ * Kaynak markdown'ın front-matter'ındaki `guncelleme: YYYY-MM-DD` → `DD/MM/YYYY`.
+ * `temizle()` front-matter'ı siliyor, bu yüzden AYRIŞTIRMA ONDAN ÖNCE yapılmalı.
+ * Bulunamazsa null döner ve altbilgi tarih satırını hiç basmaz — yanlış tarih basmaktansa hiç basma.
+ */
+function guncellemeTarihi(ham) {
+  const fm = ham.match(/^---\n([\s\S]*?)\n---/);
+  const m = fm && fm[1].match(/^guncelleme:\s*(\d{4})-(\d{2})-(\d{2})\s*$/m);
+  return m ? { iso: `${m[1]}-${m[2]}-${m[3]}`, gosterim: `${m[3]}/${m[2]}/${m[1]}` } : null;
+}
+
+/**
+ * ⚠️ Tarih PARAMETRE — eskiden `'Yayın: 05/06/2026'` düz literaldi ve rebuild'de asla
+ * değişmiyordu. Sonuç: aynı sayfada 7 hafta arayla iki tarih; metin içi "Son güncelleme:
+ * 27/07/2026" doğruyken altbilgi 05/06/2026 diyordu. `privacy.html` kendi içinde
+ * *"'Son güncelleme' tarihi değiştirilecektir"* diye söz verdiği için altbilgi o sözü
+ * yalanlıyordu; KVKK aydınlatmasında tarih, kullanıcının neyi ne zaman öğrendiğinin kanıtı.
+ */
+function footer(dil, commitHash, tarihGosterim) {
+  const etiket = dil === 'tr' ? 'Son güncelleme' : 'Last updated';
+  const tarih = tarihGosterim ? `${etiket}: ${tarihGosterim}` : '';
   const repo  = 'github.com/VictorPain/mashop-legal';
   const note  = dil === 'tr'
     ? `Bu sayfa <a href="https://${repo}">${repo}</a> üzerinden yayınlanır. Kaynak: <code>${commitHash}</code>.`
     : `This page is published from <a href="https://${repo}">${repo}</a>. Source: <code>${commitHash}</code>.`;
-  return `<footer>${tarih} · ${note}</footer>`;
+  return `<footer>${tarih ? `${tarih} · ` : ''}${note}</footer>`;
 }
 
-function sayfa({ tip, dil, title, bodyHtml }, commitHash) {
+function sayfa({ tip, dil, title, bodyHtml, tarihGosterim }, commitHash) {
   return `<!DOCTYPE html>
 <html lang="${dil}">
 <head>
@@ -127,13 +146,14 @@ ${STYLE}
 <body>
 ${nav(tip, dil)}
 ${bodyHtml}
-${footer(dil, commitHash)}
+${footer(dil, commitHash, tarihGosterim)}
 </body>
 </html>
 `;
 }
 
-function indexHtml(commitHash) {
+/** Hub sayfasının tek bir kaynağı yok → sayfaların EN YENİ `guncelleme` tarihini gösterir. */
+function indexHtml(commitHash, tarihGosterim) {
   return `<!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -169,7 +189,7 @@ ${STYLE}
 <strong>fatihaci79@gmail.com</strong></p>
 
 <footer>
-Yayın / Published: 05/06/2026 · Source: <code>${commitHash}</code><br>
+${tarihGosterim ? `Son güncelleme / Last updated: ${tarihGosterim} · ` : ''}Source: <code>${commitHash}</code><br>
 <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a>
 </footer>
 </body>
@@ -187,16 +207,27 @@ try {
 const enDir = resolve(__dirname, 'en');
 if (!existsSync(enDir)) mkdirSync(enDir, { recursive: true });
 
+let enYeniIso = null;
+let enYeniGosterim = null;
+
 for (const p of PAGES) {
   const srcPath = resolve(WIKI, p.src);
   if (!existsSync(srcPath)) { console.error(`HATA: ${srcPath} bulunamadı`); continue; }
-  const md = temizle(readFileSync(srcPath, 'utf8'));
+  const ham = readFileSync(srcPath, 'utf8');
+  // Front-matter `temizle()` içinde siliniyor → tarihi ONDAN ÖNCE oku.
+  const tarih = guncellemeTarihi(ham);
+  if (!tarih) console.warn(`UYARI: ${p.src} içinde 'guncelleme:' yok — altbilgide tarih basılmayacak`);
+  if (tarih && (enYeniIso === null || tarih.iso > enYeniIso)) {
+    enYeniIso = tarih.iso;
+    enYeniGosterim = tarih.gosterim;
+  }
+  const md = temizle(ham);
   const bodyHtml = mdToHtml(md);
-  const html = sayfa({ ...p, bodyHtml }, commitHash);
+  const html = sayfa({ ...p, bodyHtml, tarihGosterim: tarih?.gosterim ?? null }, commitHash);
   writeFileSync(resolve(__dirname, p.out), html);
-  console.log(`✓ ${p.out} (${html.length} char)`);
+  console.log(`✓ ${p.out} (${html.length} char, guncelleme ${tarih?.gosterim ?? 'YOK'})`);
 }
 
-writeFileSync(resolve(__dirname, 'index.html'), indexHtml(commitHash));
+writeFileSync(resolve(__dirname, 'index.html'), indexHtml(commitHash, enYeniGosterim));
 console.log(`✓ index.html`);
 console.log('\nTamam. Yayın için: git add -A && git commit -m "rebuild" && git push');
