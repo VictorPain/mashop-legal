@@ -37,7 +37,7 @@ a{color:var(--accent)}
 <h2>PERSONAL DATA PROTECTION NOTICE UNDER LAW NO. 6698 (&quot;KVKK&quot;)</h2>
 <p><strong>Data Controller:</strong> Fatih Acı
 <strong>Contact:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a>
-<strong>Date:</strong> 27/07/2026</p>
+<strong>Date:</strong> 29/08/2026</p>
 <p>This notice has been prepared pursuant to Article 10 of the Personal Data Protection Law No. 6698 of the Republic of Turkey (&quot;KVKK&quot;).</p>
 <p><strong>Data Controller / Data Processor Distinction.</strong> maShop (Fatih Acı) acts as a <strong>data controller</strong> for the data it collects for <strong>authentication, subscription and device management</strong>. By contrast, with respect to the <strong>customer, supplier and personnel personal data</strong> that users enter into the app themselves, maShop acts as a <strong>data processor</strong> within the meaning of Art. 3 KVKK; the <strong>data controller</strong> for such data is the user who manages the relevant store account. The obligations to provide a privacy notice, establish a lawful basis and respond to data subject requests for this third-party data belong to the <strong>user</strong>; maShop stores/processes such data solely on the user&#39;s behalf and under their instructions, and does not use it for its own purposes. The instructions and terms for this processing are set out in the User Agreement and this notice; as a data processor, maShop takes the necessary technical and administrative measures under Article 12 of KVKK.</p>
 <h3>1. Personal Data Processed and Purposes of Processing</h3>
@@ -95,8 +95,18 @@ a{color:var(--accent)}
 <td><strong>Non-personalized</strong>, opt-in rewarded ad delivery on the free plan, frequency capping, fraud prevention (Google AdMob)</td>
 <td>Google servers</td>
 </tr>
+<tr>
+<td>Subscription user identifier (derived from your in-app account) and subscription/purchase status</td>
+<td>Verification of your subscription and determination of your plan entitlements (seat count, feature access) (RevenueCat)</td>
+<td>RevenueCat, Inc. servers (USA)</td>
+</tr>
+<tr>
+<td>App usage events (session start, screen views, feature interactions) and app-instance identifier</td>
+<td>Measuring which parts of the app are used in order to improve the service (Firebase Analytics)</td>
+<td>Google servers</td>
+</tr>
 </tbody></table>
-<p><strong>Data NOT processed:</strong> Payment card information, bank account, location data, contacts, photo/media; also app usage analytics and crash reporting (this telemetry is not currently collected). Payment transactions take place exclusively via the Google Play / App Store infrastructure; card/bank information is not transmitted to us.</p>
+<p><strong>Data NOT processed:</strong> Payment card information, bank account, location data, contacts, photo/media; also <strong>crash reporting</strong> — crash logs are not collected. App usage analytics, however, is collected to a limited extent and is set out in the table above. Payment transactions take place exclusively via the Google Play / App Store infrastructure; card/bank information is not transmitted to us.</p>
 <p><strong>Important:</strong> Transaction data stored under synchronisation and backup is kept on <strong>our own server in Turkey</strong> (Muğla) <strong>on all plans</strong> and is not transferred abroad. However, the servers of essential infrastructure providers such as Google and Apple are located abroad (USA / EU); transfers to such providers are detailed in Section 2.</p>
 <h3>2. Parties to Whom Personal Data Is Transferred (Including Cross-Border Transfers)</h3>
 <p>The servers of the following service providers are located <strong>abroad</strong> (USA / EU); a limited part of your personal data is transferred abroad under Article 9 of KVKK. <strong>Important notice:</strong> These global providers (Google, Apple) do not sign the standard contract of the Personal Data Protection Board (KVKK); instead they apply their own international data processing terms and transfer commitments. <strong>We have not filed any standard contract with the Board.</strong> The transfer takes place within the scope of a <strong>mandatory infrastructure service</strong> required for the app to function, and, for <strong>optional</strong> processing such as advertising, on the basis of your <strong>explicit consent</strong>:</p>
@@ -139,6 +149,18 @@ a{color:var(--accent)}
 <td>USA / EU</td>
 <td>Only with your <strong>explicit consent (opt-in)</strong> and <strong>non-personalized</strong>; you may turn it off at any time</td>
 </tr>
+<tr>
+<td>RevenueCat, Inc.</td>
+<td>Subscription user identifier (in-app identifier), subscription/purchase status</td>
+<td>USA</td>
+<td>Infrastructure required to verify your subscription; validates the store receipt. <strong>Your name, email or payment details are not transferred</strong></td>
+</tr>
+<tr>
+<td>Google LLC (Firebase Analytics)</td>
+<td>App usage events, app-instance identifier</td>
+<td>USA / EU</td>
+<td>Limited measurement data collected to improve the service; not used for ad personalization, no profiling</td>
+</tr>
 </tbody></table>
 <p><strong>Personal data is not shared with third parties for commercial purposes.</strong> The advertising provider (AdMob) processes only limited technical data to serve <strong>non-personalized</strong> ads; no profiling/behavioral targeting is performed and personal data is not sold for advertising purposes.</p>
 <p><strong>Potential risks of cross-border transfer (KVKK Art. 9/6-a):</strong> In the country to which your data is transferred there may not be a level of data protection equivalent to KVKK, and it may become more difficult for you to exercise your rights as a data subject. Non-mandatory transfers (e.g. advertising) rely solely on your <strong>explicit consent</strong>, which you may withdraw at any time from the app settings. Transfers that are mandatory for the service to function, such as login and notifications, are necessary for you to use the app.</p>
@@ -147,8 +169,9 @@ a{color:var(--accent)}
 <p>Your personal data is collected via your login and registration actions within the app, Google or Apple Sign-In (OAuth) and automatic system records (Firebase).</p>
 <p><strong>Legal bases:</strong></p>
 <ul>
-<li><strong>KVKK Art. 5/2-c (conclusion and performance of a contract):</strong> The core function of the app, the cross-device synchronisation and backup service, and the delivery of in-app notifications fall under this basis.</li>
-<li><strong>KVKK Art. 5/1 (explicit consent) + Art. 9/6-a (cross-border transfer):</strong> The <strong>non-personalized</strong>, opt-in rewarded ads (Google AdMob) shown to sustain the free plan, and the associated cross-border transfer, rely on your <strong>explicit consent</strong>; as the ads are not personalized, no profiling is performed, and you may turn off the ads and withdraw your consent at any time. (Note: as app usage analytics / crash reporting are not currently collected, no processing is carried out for such telemetry.)</li>
+<li><strong>KVKK Art. 5/2-c (conclusion and performance of a contract) + Art. 9/6-b (cross-border transfer):</strong> The core function of the app, the cross-device synchronisation and backup service, the delivery of in-app notifications and the <strong>verification of your subscription (RevenueCat)</strong> fall under this basis. Only your in-app user identifier and subscription status are transferred to RevenueCat; this transfer is necessary so that we can grant you the entitlements (seat count, feature access) of the subscription you purchased. Your name, email address and payment details are not transferred.</li>
+<li><strong>KVKK Art. 5/1 (explicit consent) + Art. 9/6-a (cross-border transfer):</strong> The <strong>non-personalized</strong>, opt-in rewarded ads (Google AdMob) shown to sustain the free plan, and the associated cross-border transfer, rely on your <strong>explicit consent</strong>; as the ads are not personalized, no profiling is performed, and you may turn off the ads and withdraw your consent at any time.</li>
+<li><strong>KVKK Art. 5/2-f (legitimate interest):</strong> <strong>Limited usage analytics</strong> (Firebase Analytics) measuring which parts of the app are used is processed under this basis; no interest profile is built, it is not used for ad personalization and it is not shared with third parties for commercial purposes. <strong>Crash reporting is not collected.</strong></li>
 </ul>
 <h3>4. Your Rights as a Data Subject (KVKK Article 11)</h3>
 <p>Pursuant to Article 11 of KVKK you have the following rights:</p>
@@ -241,8 +264,8 @@ Active users and users within the recovery (grace) period may obtain a machine-r
 <li><strong>Data breach notification:</strong> Notification to the Authority and affected data subjects within 72 hours under KVKK Art. 12/5</li>
 </ul>
 <hr>
-<p><em>This notice was last updated on 27/07/2026 (correction of the contact/application address; the notice version remains <strong>v5</strong> — the scope of processing has not changed). The v5 changes are dated 01/07/2026 (legal correction of the Article 9 cross-border transfer basis under KVKK: express declaration that no standard contract has been filed with the Board, explicit consent for AdMob, cross-border transfer risk notice, merchant-of-record framing for the Store, and alignment of Firebase telemetry). In the event of changes to our policy, this page will be updated and an in-app notification will be issued.</em></p>
+<p><em>This notice was last updated on 29/08/2026: <strong>RevenueCat</strong> (subscription verification infrastructure, USA) was added to the transfer table and the <strong>app usage analytics</strong> disclosure was corrected to reflect the actual position. This is <strong>not an expansion of the scope of processing</strong> — both processing activities were already in effect and had been incompletely/incorrectly disclosed; the notice version therefore remains <strong>v5</strong>. The previous update is dated 27/07/2026 (correction of the contact/application address; the notice version remains <strong>v5</strong> — the scope of processing has not changed). The v5 changes are dated 01/07/2026 (legal correction of the Article 9 cross-border transfer basis under KVKK: express declaration that no standard contract has been filed with the Board, explicit consent for AdMob, cross-border transfer risk notice, merchant-of-record framing for the Store, and alignment of Firebase telemetry). In the event of changes to our policy, this page will be updated and an in-app notification will be issued.</em></p>
 
-<footer>Last updated: 27/07/2026 · This page is published from <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a>. Source: <code>c91fb0b</code>.</footer>
+<footer>Last updated: 29/08/2026 · This page is published from <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a>. Source: <code>3ce03ce</code>.</footer>
 </body>
 </html>
