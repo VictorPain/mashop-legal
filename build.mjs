@@ -49,25 +49,57 @@ li{margin:4px 0}
 a{color:var(--accent)}
 `.trim();
 
-// Markdown kaynağını temizle: front-matter, wiki cross-link, şablon kullanım uyarıları
+/**
+ * Yayınlanmasına izin verilen alıntı bloğu (blockquote) desenleri — VARSAYILAN RED.
+ *
+ * Kaynak .md dosyaları iki tür alıntı bloğu taşıyor: yayınlanacak kamusal metin ve
+ * yalnız bize yönelik iç notlar (sürüm geçmişi, "şunu atlama" hatırlatmaları, şablon
+ * doldurma talimatları). Eskiden iç notlar anahtar kelime KARA LİSTESİYLE atılıyordu;
+ * listede olmayan her YENİ iç not sessizce yayına çıkıyordu. 2026-09'da üç iç not tam
+ * bu yüzden canlıya sızdı: `kvkk.html` "v6 — kapsam genişletmesi" sürüm notu,
+ * `terms.html` "Bu madde sizi korur. Kısaltma, atlama." ve `en/terms.html`
+ * "This clause protects you. Do not skip or shorten it."
+ *
+ * Kural bu yüzden tersine çevrildi: bir alıntı bloğu YALNIZCA aşağıdaki desenlerden
+ * biriyle BAŞLIYORSA yayınlanır; tanınmayan her blok atılır. Yeni bir kamusal alıntı
+ * eklenecekse deseni buraya yazılmalı — unutulursa blok yayına çıkmaz, yani hata
+ * güvenli yöne düşer. Hangi blokların atıldığı/tutulduğu her build'de yazdırılır.
+ *
+ * Emoji karakter sınıfı KULLANILMAZ (surrogate çiftleri regex'te kırılgandır);
+ * eşleşme bloğun ilk satırının düz metni üzerinden yapılır.
+ */
+const KAMUSAL_ALINTI_DESENLERI = [
+  /^Short English version for international users/i,
+];
+
+/** Konsol raporu için: `>` işaretleri atılmış, tek satıra indirgenmiş ilk ~80 karakter. */
+function alintiOzeti(block) {
+  const duz = block.replace(/^>\s?/gm, '').replace(/\s+/g, ' ').trim();
+  return duz.length > 80 ? `${duz.slice(0, 80)}…` : duz;
+}
+
+/**
+ * Markdown kaynağını temizle: front-matter, wiki cross-link, şablon başlığı ve
+ * kamusal olmayan alıntı blokları.
+ * @returns {{ md: string, tutulan: string[], atilan: string[] }}
+ */
 function temizle(md) {
+  const tutulan = [];
+  const atilan = [];
   md = md.replace(/^---\n[\s\S]*?\n---\n/, '');
   md = md.replace(/\n##\s*İlgili[\s\S]*$/, '\n');
-  // Çok satırlı blockquote bloklarını içeriğine göre at:
-  // - "**Usage**" / "**Kullanım**" geçen
-  // - [FILL] / [DOLDUR] kelimesi geçen
-  // - "English translation" / "The Turkish version" giriş notu
-  // Bir blok = ardışık `>` ile başlayan satır dizisi
+  // Bir blok = ardışık `>` ile başlayan satır dizisi. Varsayılan RED — bkz.
+  // KAMUSAL_ALINTI_DESENLERI yorumu.
   md = md.replace(/(?:^>.*\n)+/gm, (block) => {
-    if (/\*\*(?:Usage|Kullanım)\*\*|\[FILL\]|\[DOLDUR\]|English translation|The Turkish version|Add as a section|Published as|Replace.*fields/i.test(block)) {
-      return '';
-    }
-    return block;
+    const ilkSatir = block.split('\n')[0].replace(/^>\s*/, '').replace(/\*\*/g, '').trim();
+    const kamusal = KAMUSAL_ALINTI_DESENLERI.some((desen) => desen.test(ilkSatir));
+    (kamusal ? tutulan : atilan).push(alintiOzeti(block));
+    return kamusal ? block : '';
   });
   // Şablon kelimesi geçen H1 başlıklarını çıkar (asıl başlık ## ile başlıyor)
   md = md.replace(/^#\s+.*(?:Şablonu|Template|Şablon).*$/gm, '');
   md = md.replace(/\n{3,}/g, '\n\n').trim();
-  return md;
+  return { md, tutulan, atilan };
 }
 
 function mdToHtml(md) {
@@ -221,11 +253,14 @@ for (const p of PAGES) {
     enYeniIso = tarih.iso;
     enYeniGosterim = tarih.gosterim;
   }
-  const md = temizle(ham);
+  const { md, tutulan, atilan } = temizle(ham);
   const bodyHtml = mdToHtml(md);
   const html = sayfa({ ...p, bodyHtml, tarihGosterim: tarih?.gosterim ?? null }, commitHash);
   writeFileSync(resolve(__dirname, p.out), html);
   console.log(`✓ ${p.out} (${html.length} char, guncelleme ${tarih?.gosterim ?? 'YOK'})`);
+  // Alıntı blokları sessizce düşmesin — hangisi yayına girdi, hangisi atıldı görünsün.
+  for (const ozet of tutulan) console.log(`    alıntı TUTULDU : ${ozet}`);
+  for (const ozet of atilan) console.log(`    alıntı ATILDI  : ${ozet}`);
 }
 
 writeFileSync(resolve(__dirname, 'index.html'), indexHtml(commitHash, enYeniGosterim));
