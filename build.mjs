@@ -72,6 +72,21 @@ const KAMUSAL_ALINTI_DESENLERI = [
   /^Short English version for international users/i,
 ];
 
+/**
+ * Yayın kilidi — kaynak metinlerde doldurulmayı bekleyen tarih yer tutucuları.
+ *
+ * Yasal metinler, mobil sürüm mağazada görünür olmadan ÖNCE hazırlanıp wiki'ye
+ * yazılıyor; ama `mashop-legal` push'u anında canlı olduğu için erken bir rebuild,
+ * uygulamada henüz bulunmayan bir özelliği anlatan metni yayına çıkarır (yanıltıcı
+ * aydınlatma). Bu yüzden metindeki tarih, gerçek sürüm gününe kadar yer tutucu
+ * olarak bırakılır ve build yer tutucu gördüğü an HİÇBİR dosya yazmadan durur
+ * (fail-closed): yanlışlıkla koşan bir build canlıyı bozamaz.
+ *
+ * Sürüm günü: yer tutucular gerçek tarihle değiştirilir, front-matter `guncelleme:`
+ * alanı da aynı tarihe çekilir (altbilgideki tarih O alandan basılır), sonra build.
+ */
+const YAYIN_KILIDI_DESENLERI = ['[SÜRÜM GÜNÜ TARİHİ]', '[RELEASE DAY DATE]'];
+
 /** Konsol raporu için: `>` işaretleri atılmış, tek satıra indirgenmiş ilk ~80 karakter. */
 function alintiOzeti(block) {
   const duz = block.replace(/^>\s?/gm, '').replace(/\s+/g, ' ').trim();
@@ -235,6 +250,35 @@ let commitHash = 'pending';
 try {
   commitHash = execFileSync('git', ['rev-parse', '--short', 'HEAD'], { cwd: __dirname }).toString().trim();
 } catch {}
+
+// --- Yayın kilidi: HİÇBİR dosya yazılmadan önce tüm kaynakları tara (fail-closed).
+{
+  const bulgular = [];
+  for (const p of PAGES) {
+    const srcPath = resolve(WIKI, p.src);
+    if (!existsSync(srcPath)) continue;
+    const satirlar = readFileSync(srcPath, 'utf8').split('\n');
+    satirlar.forEach((satir, i) => {
+      // Alıntı (`>`) satırları iç nottur ve yayına girmez; kilidi anlatan notun kendisi de
+      // yer tutucu metnini taşır — taranırsa gerçek yer tutucular dolsa bile kilit açılmaz.
+      if (satir.startsWith('>')) return;
+      for (const desen of YAYIN_KILIDI_DESENLERI) {
+        if (satir.includes(desen)) bulgular.push({ src: p.src, satir: i + 1, desen, metin: satir.trim() });
+      }
+    });
+  }
+  if (bulgular.length > 0) {
+    console.error('\n⛔ YAYIN KİLİDİ: kaynak metinlerde doldurulmamış tarih yer tutucusu var.');
+    console.error('   Hiçbir dosya yazılmadı. Yer tutucular yalnızca mobil sürüm mağazada');
+    console.error('   GÖRÜNÜR olduğu gün gerçek tarihle değiştirilir (bkz. YAYIN_KILIDI_DESENLERI).\n');
+    for (const b of bulgular) {
+      const kisa = b.metin.length > 100 ? `${b.metin.slice(0, 100)}…` : b.metin;
+      console.error(`   ${b.src}:${b.satir}  ${b.desen}\n     ${kisa}`);
+    }
+    console.error('');
+    process.exit(1);
+  }
+}
 
 const enDir = resolve(__dirname, 'en');
 if (!existsSync(enDir)) mkdirSync(enDir, { recursive: true });
