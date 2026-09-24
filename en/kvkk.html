@@ -37,7 +37,7 @@ a{color:var(--accent)}
 <h2>PERSONAL DATA PROTECTION NOTICE UNDER LAW NO. 6698 (&quot;KVKK&quot;)</h2>
 <p><strong>Data Controller:</strong> Fatih Acı
 <strong>Contact:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a>
-<strong>Date:</strong> 09/09/2026</p>
+<strong>Date:</strong> 24/09/2026</p>
 <p>This notice has been prepared pursuant to Article 10 of the Personal Data Protection Law No. 6698 of the Republic of Turkey (&quot;KVKK&quot;).</p>
 <p><strong>Data Controller / Data Processor Distinction.</strong> maShop (Fatih Acı) acts as a <strong>data controller</strong> for the data it collects for <strong>authentication, subscription and device management</strong>. By contrast, with respect to the <strong>customer, supplier and personnel personal data</strong> that users enter into the app themselves, maShop acts as a <strong>data processor</strong> within the meaning of Art. 3 KVKK; the <strong>data controller</strong> for such data is the user who manages the relevant store account. The obligations to provide a privacy notice, establish a lawful basis and respond to data subject requests for this third-party data belong to the <strong>user</strong>; maShop stores/processes such data solely on the user&#39;s behalf and under their instructions, and does not use it for its own purposes. The instructions and terms for this processing are set out in the User Agreement and this notice; as a data processor, maShop takes the necessary technical and administrative measures under Article 12 of KVKK.</p>
 <h3>1. Personal Data Processed and Purposes of Processing</h3>
@@ -63,7 +63,7 @@ a{color:var(--accent)}
 <tr>
 <td>Transaction data entered in the app (product name, price, date)</td>
 <td>Performance of the core function of the app; cross-device synchronisation and backup</td>
-<td>Your device + <strong>on all plans</strong>, a synchronised copy and AES-256 encrypted backup on our own server in Turkey (Muğla)</td>
+<td>Your device + <strong>on all plans</strong>, a synchronised copy and backup on our own server in Turkey (Muğla)</td>
 </tr>
 <tr>
 <td>Supplier / customer names</td>
@@ -213,7 +213,7 @@ Active users and users within the recovery (grace) period may obtain a machine-r
 <h3>6. Synchronisation, Backup and Multi-User Services</h3>
 <p><strong>Synchronisation and Backup (all plans):</strong></p>
 <ul>
-<li>Your transaction data is stored primarily on your device and, by the nature of the service (preventing data loss on device change, multi-user / multi-device synchronisation, backup), is synchronised <strong>on all plans</strong> with our own server in Turkey (Muğla) over an encrypted connection (TLS 1.3); the server-side backup is stored <strong>encrypted with AES-256</strong>.</li>
+<li>Your transaction data is stored primarily on your device and, by the nature of the service (preventing data loss on device change, multi-user / multi-device synchronisation, backup), is synchronised <strong>on all plans</strong> with our own server in Turkey (Muğla) over an encrypted connection (HTTPS/TLS); the server-side copy is backed up regularly to separate storage units (Section 7).</li>
 <li>Data is not transferred abroad; KVKK Art. 9 cross-border transfer does not apply to this storage.</li>
 <li>Server-side data is subject to the retention rules in Section 5 (permanently deleted upon an account deletion request or after 1 year of inactivity).</li>
 </ul>
@@ -265,16 +265,17 @@ Active users and users within the recovery (grace) period may obtain a machine-r
 <h3>7. Data Security Measures</h3>
 <p>Technical and administrative measures taken under KVKK Art. 12:</p>
 <ul>
-<li><strong>Encryption in transit:</strong> TLS 1.3 (HTTPS)</li>
-<li><strong>Backup encryption:</strong> AES-256 (at rest)</li>
-<li><strong>Access control:</strong> The server is accessed only by authorised personnel (the developer); the home server is protected by physical access restrictions</li>
-<li><strong>Network security:</strong> Firewall, fail2ban, Cloudflare proxy</li>
-<li><strong>Backup:</strong> Regular backups to multiple local media + cold storage</li>
+<li><strong>Encryption in transit:</strong> All traffic between the app and the server is encrypted with HTTPS (TLS); certificates are renewed automatically</li>
+<li><strong>Network security:</strong> The server&#39;s firewall rejects incoming connections by default; only the web ports (80/443) are open to the internet</li>
+<li><strong>Administrative access:</strong> Administrative access to the server (SSH) is possible only from the developer&#39;s device, with a cryptographic key rather than a password, and only over the local network or an encrypted private network (VPN); no administrative port is open on the router</li>
+<li><strong>Rate limiting:</strong> The server applies per-user and per-IP request limits to restrict abuse and brute-force attempts</li>
+<li><strong>Backup:</strong> The database is backed up hourly and daily to two separate storage units (one of them on a separate device); backup completion is monitored automatically and restoration is tested periodically</li>
 <li><strong>Data breach notification:</strong> Notification to the Authority and affected data subjects within 72 hours under KVKK Art. 12/5</li>
 </ul>
 <hr>
+<p><em>This notice was corrected on 24/09/2026: the data security measures (Section 7) were updated to reflect the actual position; statements that could not be verified were removed and the measures actually applied were set out in detail. The statements on transfer/backup encryption in Sections 1 and 6 were aligned accordingly. As the purposes of processing, data categories and recipients have not changed, the notice version remains <strong>v6</strong>.</em></p>
 <p><em>This notice was last updated on 09/09/2026 (<strong>v6</strong>): <strong>Section 2.1 Anonymised and Aggregated Data</strong> and <strong>Section 2.2 Sub-Processors and Hosting</strong> were added, and the <strong>legal basis for usage analytics</strong> was corrected from legitimate interest to <strong>explicit consent</strong>, expressly declaring that it is OFF by default. As Section 2.1 expands the scope of processing, the notice version was raised to <strong>v6</strong> and existing users were asked to give their consent again. The previous update is dated 29/08/2026: <strong>RevenueCat</strong> (subscription verification infrastructure, USA) was added to the transfer table and the <strong>app usage analytics</strong> disclosure was corrected to reflect the actual position. This is <strong>not an expansion of the scope of processing</strong> — both processing activities were already in effect and had been incompletely/incorrectly disclosed; the notice version therefore remains <strong>v5</strong>. The previous update is dated 27/07/2026 (correction of the contact/application address; the notice version remains <strong>v5</strong> — the scope of processing has not changed). The v5 changes are dated 01/07/2026 (legal correction of the Article 9 cross-border transfer basis under KVKK: express declaration that no standard contract has been filed with the Board, explicit consent for AdMob, cross-border transfer risk notice, merchant-of-record framing for the Store, and alignment of Firebase telemetry). In the event of changes to our policy, this page will be updated and an in-app notification will be issued.</em></p>
 
-<footer>Last updated: 09/09/2026 · This page is published from <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a>. Source: <code>930863e</code>.</footer>
+<footer>Last updated: 24/09/2026 · This page is published from <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a>. Source: <code>179bef7</code>.</footer>
 </body>
 </html>

@@ -34,7 +34,7 @@ a{color:var(--accent)}
 <nav><a href="index.html">⬅ Ana sayfa</a><a href="privacy.html">Gizlilik</a><a aria-current="page" style="background:var(--accent);color:var(--bg)">KVKK Aydınlatma</a><a href="terms.html">Kullanıcı Sözleşmesi</a><a href="delete.html">Hesap Silme</a><a class="lang" href="en/kvkk.html">🇬🇧 English</a></nav>
 <hr>
 <h2>KİŞİSEL VERİLERİN KORUNMASI KANUNU KAPSAMINDA AYDINLATMA METNİ</h2>
-<p><strong>Veri Sorumlusu:</strong> Fatih Acı<br><strong>İletişim:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a><br><strong>Tarih:</strong> 09/09/2026</p>
+<p><strong>Veri Sorumlusu:</strong> Fatih Acı<br><strong>İletişim:</strong> <a href="mailto:fatihaci79@gmail.com">fatihaci79@gmail.com</a><br><strong>Tarih:</strong> 24/09/2026</p>
 <p>Bu aydınlatma metni, 6698 sayılı Kişisel Verilerin Korunması Kanunu&#39;nun 10. maddesi uyarınca hazırlanmıştır.</p>
 <p><strong>Veri Sorumlusu / Veri İşleyen Ayrımı.</strong> maShop (Fatih Acı), kullanıcıların <strong>kimlik doğrulaması, abonelik ve cihaz yönetimi</strong> için topladığı verilerde <strong>veri sorumlusu</strong> sıfatıyla hareket eder. Buna karşılık, kullanıcıların uygulamaya kendi girdikleri <strong>müşteri, tedarikçi ve personel kişisel verileri</strong> bakımından maShop, KVKK m.3 anlamında <strong>veri işleyen</strong> sıfatındadır; bu verilerin <strong>veri sorumlusu</strong>, ilgili dükkân hesabını yöneten kullanıcıdır. Bu üçüncü kişi verilerine ilişkin aydınlatma yapma, hukuki dayanak sağlama ve ilgili kişi başvurularını karşılama yükümlülüğü <strong>kullanıcıya</strong> aittir; maShop bu verileri yalnızca kullanıcı adına ve onun talimatı doğrultusunda saklar/işler, kendi amaçları için kullanmaz. Bu işlemeye ilişkin talimat ve şartlar, Kullanıcı Sözleşmesi ve işbu aydınlatma metni ile belirlenir; maShop, veri işleyen sıfatıyla KVKK m.12 kapsamında gerekli teknik ve idari tedbirleri alır.</p>
 <h3>1. İşlenen Kişisel Veriler ve İşleme Amaçları</h3>
@@ -60,7 +60,7 @@ a{color:var(--accent)}
 <tr>
 <td>Uygulamaya girilen işlem verileri (ürün adı, fiyat, tarih)</td>
 <td>Uygulamanın temel işlevinin yerine getirilmesi; cihazlar arası senkronizasyon ve yedekleme</td>
-<td>Cihazınız + <strong>tüm planlarda</strong> Türkiye&#39;deki kendi sunucumuzda (Muğla) senkronizasyon kopyası ve AES-256 şifreli yedek</td>
+<td>Cihazınız + <strong>tüm planlarda</strong> Türkiye&#39;deki kendi sunucumuzda (Muğla) senkronizasyon kopyası ve yedeği</td>
 </tr>
 <tr>
 <td>Tedarikçi/müşteri adları</td>
@@ -211,7 +211,7 @@ a{color:var(--accent)}
 <h3>6. Senkronizasyon, Yedekleme ve Çoklu Kullanıcı Hizmetleri</h3>
 <p><strong>Senkronizasyon ve Yedekleme (tüm planlar):</strong></p>
 <ul>
-<li>İşlem verileriniz öncelikle cihazınızda saklanır ve hizmetin doğası gereği (cihaz değişiminde veri kaybını önleme, çoklu kullanıcı/çoklu cihaz senkronizasyonu, yedekleme) <strong>tüm planlarda</strong> Türkiye&#39;deki kendi sunucumuzla (Muğla) şifreli bağlantı (TLS 1.3) üzerinden senkronize edilir; sunucudaki yedek <strong>AES-256 ile şifreli</strong> saklanır.</li>
+<li>İşlem verileriniz öncelikle cihazınızda saklanır ve hizmetin doğası gereği (cihaz değişiminde veri kaybını önleme, çoklu kullanıcı/çoklu cihaz senkronizasyonu, yedekleme) <strong>tüm planlarda</strong> Türkiye&#39;deki kendi sunucumuzla (Muğla) şifreli bağlantı (HTTPS/TLS) üzerinden senkronize edilir; sunucudaki kopya düzenli olarak ayrı depolama birimlerine yedeklenir (Madde 7).</li>
 <li>Veri yurt dışına aktarılmaz; bu saklama bakımından KVKK m.9 yurt dışı veri aktarımı söz konusu değildir.</li>
 <li>Sunucudaki veriler, Madde 5&#39;teki saklama kurallarına tabidir (hesap silme talebi veya 1 yıl inaktiflik ile kalıcı silinir).</li>
 </ul>
@@ -263,16 +263,17 @@ a{color:var(--accent)}
 <h3>7. Veri Güvenliği Önlemleri</h3>
 <p>KVKK m.12 kapsamında alınan teknik ve idari önlemler:</p>
 <ul>
-<li><strong>Aktarım sırasında şifreleme:</strong> TLS 1.3 (HTTPS)</li>
-<li><strong>Yedek şifreleme:</strong> AES-256 (saklama sırasında)</li>
-<li><strong>Erişim kontrolü:</strong> Sunucu yalnızca yetkili kişi (geliştirici) tarafından erişilir; ev sunucusu fiziksel erişim sınırlamasıyla korunur</li>
-<li><strong>Ağ güvenliği:</strong> Firewall, fail2ban, Cloudflare proxy</li>
-<li><strong>Yedekleme:</strong> Birden fazla yerel ortama düzenli yedek + soğuk depo</li>
+<li><strong>Aktarım sırasında şifreleme:</strong> Uygulama ile sunucu arasındaki tüm trafik HTTPS (TLS) ile şifrelenir; sertifikalar otomatik yenilenir</li>
+<li><strong>Ağ güvenliği:</strong> Sunucunun güvenlik duvarı gelen bağlantıları varsayılan olarak reddeder; internete yalnızca web portları (80/443) açıktır</li>
+<li><strong>Yönetim erişimi:</strong> Sunucuya yönetim erişimi (SSH) yalnızca geliştiricinin cihazından, parola ile değil kriptografik anahtarla ve yalnızca yerel ağ ya da şifreli özel ağ (VPN) üzerinden mümkündür; modemde yönetim portu açık değildir</li>
+<li><strong>İstek sınırlaması:</strong> Sunucu, kötüye kullanımı ve kaba kuvvet denemelerini sınırlamak için kullanıcı ve IP bazında istek sınırı uygular</li>
+<li><strong>Yedekleme:</strong> Veritabanı saatlik ve günlük olarak iki ayrı depolama birimine (biri ayrı bir cihazda) yedeklenir; yedeklerin alınıp alınmadığı otomatik olarak izlenir ve geri yükleme periyodik olarak test edilir</li>
 <li><strong>Veri ihlali bildirimi:</strong> KVKK m.12/5 kapsamında 72 saat içinde Kurul ve etkilenen veri sahiplerine bildirim yapılır</li>
 </ul>
 <hr>
+<p><em>Bu metin 24/09/2026 tarihinde düzeltilmiştir: veri güvenliği önlemleri (Madde 7) fiilî duruma göre güncellenmiş; doğrulanamayan ifadeler çıkarılmış ve uygulanan önlemler ayrıntılandırılmıştır. Madde 1 ve 6&#39;daki aktarım/yedek şifrelemesi ifadeleri buna hizalanmıştır. İşleme amacı, veri türleri ve alıcılar değişmediğinden aydınlatma sürümü <strong>v6</strong> olarak korunmuştur.</em></p>
 <p><em>Bu metin 09/09/2026 tarihinde güncellenmiştir (<strong>v6</strong>): <strong>Madde 2.1 Anonim ve Toplulaştırılmış Veri</strong> ve <strong>Madde 2.2 Alt İşleyenler ve Barındırma</strong> eklenmiş, <strong>kullanım analitiğinin hukuki dayanağı</strong> meşru menfaatten <strong>açık rızaya</strong> çekilerek varsayılanın kapalı olduğu açıkça beyan edilmiştir. Madde 2.1 işleme kapsamını genişlettiğinden aydınlatma sürümü <strong>v6</strong>&#39;ya yükseltilmiş ve mevcut kullanıcılardan yeniden onay alınmıştır. Önceki güncelleme 29/08/2026 tarihlidir: <strong>RevenueCat</strong> (abonelik doğrulama altyapısı, ABD) aktarım tablosuna eklenmiş ve <strong>uygulama kullanım analitiği</strong> beyanı fiili duruma göre düzeltilmiştir. Bu bir <strong>işleme kapsamı genişlemesi değildir</strong> — her iki işleme de daha önce yürürlükteydi, metinde eksik/yanlış beyan edilmişti; bu nedenle aydınlatma sürümü <strong>v5</strong> olarak korunmuştur. Önceki güncelleme 27/07/2026 tarihlidir (iletişim/başvuru adresi düzeltmesi; aydınlatma sürümü <strong>v5</strong> olarak kalmıştır — işleme kapsamı değişmemiştir). v5 değişiklikleri 01/07/2026 tarihlidir (KVKK m.9 yurt dışı aktarım dayanağının hukuki düzeltmesi: Kurul&#39;a bildirilmiş standart sözleşme bulunmadığının açık beyanı, AdMob için açık rıza, aktarım risk uyarısı, Store merchant-of-record çerçevesi ve Firebase telemetri hizalaması). Politikamızda değişiklik olması halinde bu sayfa güncellenir ve uygulama içi bildirim yapılır.</em></p>
 
-<footer>Son güncelleme: 09/09/2026 · Bu sayfa <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a> üzerinden yayınlanır. Kaynak: <code>930863e</code>.</footer>
+<footer>Son güncelleme: 24/09/2026 · Bu sayfa <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a> üzerinden yayınlanır. Kaynak: <code>179bef7</code>.</footer>
 </body>
 </html>
