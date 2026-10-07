@@ -35,7 +35,7 @@ a{color:var(--accent)}
 <h1>Account and Data Deletion</h1>
 <p><strong>App:</strong> maShop (<code>com.fatihaci.mashoppro</code>)
 <strong>Developer:</strong> Fatih Acı
-<strong>Last updated:</strong> 26/07/2026</p>
+<strong>Last updated:</strong> 07/10/2026</p>
 <p>There are two ways to delete your maShop account and all data associated with it. You can use the second option (email) even if you have already uninstalled the app.</p>
 <hr>
 <h2>First: cancel your subscription</h2>
@@ -88,15 +88,22 @@ a{color:var(--accent)}
 <td><strong>All data belonging to your account is permanently deleted.</strong> This cannot be undone.</td>
 </tr>
 </tbody></table>
-<p><strong>Permanently deleted:</strong> your name, email address, account identifier, all business records (sales, purchases, expenses, customers, products, staff, commissions), your subscription status record, and the device identifier used to deliver notifications.</p>
-<p><strong>The only record kept:</strong> an audit entry showing that a deletion took place (deletion date and number of records removed). It is retained under KVKK Articles 7 and 12 and <strong>contains no name, email address, or content data</strong>.</p>
+<p><strong>Permanently deleted:</strong> your name, email address, account identifier, all business records (sales, purchases, expenses, customers, products, staff, commissions), your subscription status record, the device identifier used to deliver notifications, your device records (device name, model, operating system and app version), your announcement read records and the technical traces of synchronisation errors.</p>
+<p><strong>The record that remains after deletion:</strong> a proof record showing that the deletion took place — the account identifier, an irreversible digest of your email address generated with a secret key (your plain email address is not stored), the request and deletion dates, the number of records removed and the reason for deletion. It is retained for <strong>10 years</strong> under KVKK Art. 5/2-e and <strong>contains no name or content data</strong>. Server records (logs) are deleted automatically within 30 days at the latest, and access records at the server entry point within 15 days at the latest.</p>
+<p><strong>System backups:</strong> Permanent deletion means deletion from our live system. Deleted data may remain in our encrypted system backups until it ages out of the backup rotation schedule (longest tier <strong>12 months</strong>); these backups are accessed for disaster recovery purposes only and are not used in ordinary processing activities. For details see Section 5 of the <a href="kvkk.html">KVKK Personal Data Notice</a>.</p>
 <p>Separately, records you delete individually inside the app are kept on the server with a &quot;deleted&quot; marker for <strong>30 days</strong> so the deletion can reach your other devices, then permanently removed. During that period the record is not displayed anywhere and is excluded from reports.</p>
 <hr>
 <h2>If you are an invited user (partner / employee)</h2>
 <p>If you joined someone else&#39;s shop account by invitation, <strong>Delete My Account</strong> removes only your sign-in and email address. The sales records you created remain in the shop, because they are the shop owner&#39;s business data. To have those records deleted, contact the shop owner.</p>
 <hr>
 <h2>If you never sign in</h2>
-<p>If no one signs in to your account for <strong>one continuous year</strong>, your account and all its data are permanently deleted without waiting for a request. You are notified in the app before deletion. Signing in resets this period.</p>
+<p>If no active user of your account signs in for <strong>365 days</strong>, your account and all its data are permanently deleted without waiting for a request. Opening the app while connected to the internet counts as signing in and resets this period.</p>
+<ul>
+<li>Before deletion the account enters a warning stage and a push notification is sent to the account&#39;s active users. It may not arrive if notification permission is off, the session has been signed out or the phone has suspended an app that has not been used for a long time; no email notification is sent.</li>
+<li>The account is not deleted until <strong>at least 30 days</strong> have passed since the warning stage began.</li>
+<li>If you have an <strong>active paid subscription</strong>, your account is not deleted under this rule while the subscription continues.</li>
+</ul>
+<p>Details: Section 5 of the <a href="kvkk.html">KVKK Personal Data Notice</a>.</p>
 <hr>
 <h2>Related documents</h2>
 <ul>
@@ -105,6 +112,6 @@ a{color:var(--accent)}
 <li><a href="terms.html">Terms of Service</a></li>
 </ul>
 
-<footer>Last updated: 26/07/2026 · This page is published from <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a>. Source: <code>930863e</code>.</footer>
+<footer>Last updated: 07/10/2026 · This page is published from <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a>. Source: <code>a75991c</code>.</footer>
 </body>
 </html>

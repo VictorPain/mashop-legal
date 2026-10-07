@@ -35,7 +35,7 @@ a{color:var(--accent)}
 <h1>Hesap ve Veri Silme</h1>
 <p><strong>Uygulama:</strong> maShop (<code>com.fatihaci.mashoppro</code>)
 <strong>Geliştirici:</strong> Fatih Acı
-<strong>Son güncelleme:</strong> 26/07/2026</p>
+<strong>Son güncelleme:</strong> 07/10/2026</p>
 <p>maShop hesabınızı ve hesabınıza bağlı tüm verileri silmek için iki yol vardır. Uygulamayı telefonunuzdan kaldırmış olsanız bile ikinci yolu (e-posta) kullanabilirsiniz.</p>
 <hr>
 <h2>Önce: Aboneliğinizi iptal edin</h2>
@@ -88,17 +88,24 @@ a{color:var(--accent)}
 <td>Hesabınıza ait <strong>tüm veriler kalıcı olarak silinir</strong>. Bu işlem geri alınamaz.</td>
 </tr>
 </tbody></table>
-<p><strong>Kalıcı olarak silinen veriler:</strong> adınız, e-posta adresiniz, hesap kimliğiniz, tüm işlem kayıtlarınız (satış, alış, gider, müşteri, ürün, personel, komisyon), abonelik durumu kaydınız ve bildirim gönderimi için kullanılan cihaz kimliğiniz.</p>
-<p><strong>Silinmeyen tek kayıt:</strong> silme işleminin yapıldığına dair denetim kaydı (silme tarihi ve silinen kayıt sayısı). Bu kayıt KVKK m.7 ve m.12 kapsamında tutulur; <strong>adınızı, e-postanızı veya herhangi bir içerik verinizi içermez</strong>.</p>
+<p><strong>Kalıcı olarak silinen veriler:</strong> adınız, e-posta adresiniz, hesap kimliğiniz, tüm işlem kayıtlarınız (satış, alış, gider, müşteri, ürün, personel, komisyon), abonelik durumu kaydınız, bildirim gönderimi için kullanılan cihaz kimliğiniz, cihaz kayıtlarınız (cihaz adı, model, işletim sistemi ve uygulama sürümü), duyuru okuma kayıtlarınız ve senkronizasyon hatalarına ait teknik izler.</p>
+<p><strong>Silmeden sonra kalan kayıt:</strong> silmenin yapıldığını ispat eden kanıt kaydı — hesap kimliği, e-posta adresinizin gizli anahtarla üretilmiş geri döndürülemez özeti (açık e-posta adresiniz saklanmaz), talep ve silme tarihleri, silinen kayıt sayısı ve silme sebebi. Bu kayıt KVKK m.5/2-e kapsamında <strong>10 yıl</strong> saklanır; <strong>adınızı veya herhangi bir içerik verinizi içermez</strong>. Sunucu kayıtları (log) en geç 30 gün, sunucu girişindeki erişim kayıtları en geç 15 gün içinde kendiliğinden silinir.</p>
+<p><strong>Sistem yedekleri:</strong> Kalıcı silme, verinin canlı sistemimizden silinmesini ifade eder. Silinen veriler, şifreli sistem yedeklerimizde yedek rotasyon takvimi boyunca (en uzun kademe <strong>12 ay</strong>) düşene kadar kalabilir; bu yedeklere yalnızca felaket kurtarma amacıyla erişilir ve olağan işleme faaliyetinde kullanılmaz. Ayrıntı: <a href="kvkk.html">KVKK Aydınlatma Metni</a> Madde 5.</p>
 <p>Ayrıca uygulama içinde tek tek sildiğiniz kayıtlar, silme bilgisinin diğer cihazlarınıza ulaşabilmesi için sunucuda <strong>30 gün</strong> &quot;silinmiş&quot; işaretiyle tutulur, sonra kalıcı olarak silinir. Bu süre boyunca kayıt hiçbir yerde görüntülenmez ve raporlara girmez.</p>
 <hr>
 <h2>Davet edilen kullanıcıysanız (ortak / çalışan)</h2>
 <p>Bir başkasının dükkân hesabına davetle katıldıysanız, <strong>Hesabımı Sil</strong> işlemi yalnız sizin girişinizi ve e-postanızı siler. Dükkânda yaptığınız satış kayıtları dükkân sahibine ait ticari veri olduğu için dükkânda kalmaya devam eder. Bu kayıtların silinmesini istiyorsanız dükkân sahibiyle iletişime geçmeniz gerekir.</p>
 <hr>
 <h2>Hiç giriş yapmazsanız</h2>
-<p>Hesabınıza <strong>kesintisiz 1 yıl</strong> boyunca giriş yapılmazsa, hesabınız ve tüm verileriniz talebinizi beklemeden kalıcı olarak silinir. Silme öncesinde uygulama içinde bilgilendirme yapılır. Giriş yapmanız bu süreyi sıfırlar.</p>
+<p>Hesabınızın hiçbir aktif kullanıcısı <strong>365 gün</strong> boyunca giriş yapmazsa, hesabınız ve tüm verileriniz talebinizi beklemeden kalıcı olarak silinir. Uygulamayı internet bağlantısı varken açmanız giriş sayılır ve bu süreyi sıfırlar.</p>
+<ul>
+<li>Silmeden önce hesap uyarı aşamasına alınır ve hesabın aktif kullanıcılarına anlık bildirim gönderilir. Bildirim izni kapalıysa, oturum kapatılmışsa veya telefon uzun süre kullanılmayan uygulamayı askıya almışsa bu bildirim ulaşmayabilir; e-posta ile bildirim gönderilmez.</li>
+<li>Uyarı aşamasının başlamasından itibaren <strong>en az 30 gün</strong> geçmeden hesap silinmez.</li>
+<li><strong>Aktif ücretli aboneliğiniz</strong> varsa, abonelik sürdüğü sürece hesabınız bu kuralla silinmez.</li>
+</ul>
+<p>Ayrıntı: <a href="kvkk.html">KVKK Aydınlatma Metni</a> Madde 5.</p>
 <hr>
 
-<footer>Son güncelleme: 26/07/2026 · Bu sayfa <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a> üzerinden yayınlanır. Kaynak: <code>930863e</code>.</footer>
+<footer>Son güncelleme: 07/10/2026 · Bu sayfa <a href="https://github.com/VictorPain/mashop-legal">github.com/VictorPain/mashop-legal</a> üzerinden yayınlanır. Kaynak: <code>a75991c</code>.</footer>
 </body>
 </html>
