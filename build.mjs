@@ -21,7 +21,36 @@ const PAGES = [
   { tip: 'terms',   dil: 'en', src: 'kullanici-sozlesmesi-en.md',   title: 'maShop — Terms of Service',      out: 'en/terms.html' },
   { tip: 'delete',  dil: 'tr', src: 'hesap-silme-tr.md',           title: 'maShop — Hesap ve Veri Silme',   out: 'delete.html' },
   { tip: 'delete',  dil: 'en', src: 'hesap-silme-en.md',           title: 'maShop — Account Deletion',      out: 'en/delete.html' },
+  // --- AB/AEA (2026-10-11): EEA Eki (EN + 4 dil) + gizlilik ve hesap silme çevirileri.
+  // KVKK ve Kullanıcı Sözleşmesi bilerek ÇEVRİLMEZ: DE/FR/IT/ES sayfaları bunlara İngilizce sürümü gösterir
+  // (bkz. ab-acilis-plani.md). Yer tutuculu kaynaklar yayın kilidine takılır (fail-closed).
+  { tip: 'eea',     dil: 'en', src: 'eea-ek-en.md',                 title: 'maShop — Legal Notice and EEA Addendum',            out: 'en/eea.html' },
+  { tip: 'privacy', dil: 'de', src: 'privacy-policy-de.md',         title: 'maShop — Datenschutzerklärung',                     out: 'de/privacy.html' },
+  { tip: 'delete',  dil: 'de', src: 'hesap-silme-de.md',            title: 'maShop — Konto- und Datenlöschung',                 out: 'de/delete.html' },
+  { tip: 'eea',     dil: 'de', src: 'eea-ek-de.md',                 title: 'maShop — Rechtliche Hinweise und EWR-Ergänzung',    out: 'de/eea.html' },
+  { tip: 'privacy', dil: 'fr', src: 'privacy-policy-fr.md',         title: 'maShop — Politique de confidentialité',             out: 'fr/privacy.html' },
+  { tip: 'delete',  dil: 'fr', src: 'hesap-silme-fr.md',            title: 'maShop — Suppression du compte et des données',     out: 'fr/delete.html' },
+  { tip: 'eea',     dil: 'fr', src: 'eea-ek-fr.md',                 title: 'maShop — Mentions légales et addendum EEE',         out: 'fr/eea.html' },
+  { tip: 'privacy', dil: 'it', src: 'privacy-policy-it.md',         title: 'maShop — Informativa sulla privacy',                out: 'it/privacy.html' },
+  { tip: 'delete',  dil: 'it', src: 'hesap-silme-it.md',            title: 'maShop — Eliminazione di account e dati',           out: 'it/delete.html' },
+  { tip: 'eea',     dil: 'it', src: 'eea-ek-it.md',                 title: 'maShop — Note legali e addendum SEE',               out: 'it/eea.html' },
+  { tip: 'privacy', dil: 'es', src: 'privacy-policy-es.md',         title: 'maShop — Política de privacidad',                   out: 'es/privacy.html' },
+  { tip: 'delete',  dil: 'es', src: 'hesap-silme-es.md',            title: 'maShop — Eliminación de cuenta y datos',            out: 'es/delete.html' },
+  { tip: 'eea',     dil: 'es', src: 'eea-ek-es.md',                 title: 'maShop — Aviso legal y adenda EEE',                 out: 'es/eea.html' },
 ];
+
+/** Hangi dilde hangi sayfa var → dil değiştirici ve nav yalnız GERÇEKTEN var olan sayfalara bağlanır. */
+const SAYFA_VAR = new Set(PAGES.map((p) => `${p.dil}/${p.tip}`));
+const DILLER = {
+  tr: { ad: '🇹🇷 Türkçe',  ana: '⬅ Ana sayfa',  guncelleme: 'Son güncelleme' },
+  en: { ad: '🇬🇧 English', ana: '⬅ Home',        guncelleme: 'Last updated' },
+  de: { ad: '🇩🇪 Deutsch', ana: '⬅ Startseite',  guncelleme: 'Letzte Aktualisierung' },
+  fr: { ad: '🇫🇷 Français', ana: '⬅ Accueil',    guncelleme: 'Dernière mise à jour' },
+  it: { ad: '🇮🇹 Italiano', ana: '⬅ Home',       guncelleme: 'Ultimo aggiornamento' },
+  es: { ad: '🇪🇸 Español', ana: '⬅ Inicio',      guncelleme: 'Última actualización' },
+};
+/** KVKK aydınlatması ve Kullanıcı Sözleşmesi yalnız TR + EN'dedir; diğer diller İngilizce sürüme gider. */
+const CEVRILMEYEN = new Set(['kvkk', 'terms']);
 
 const STYLE = `
 :root { color-scheme: light dark; --bg:#fff; --fg:#222; --muted:#666; --border:#e0e0e0; --accent:#2d5fb8; --warn:rgba(255,180,0,.12); --warn-b:#ffb400; }
@@ -87,6 +116,16 @@ const KAMUSAL_ALINTI_DESENLERI = [
  */
 const YAYIN_KILIDI_DESENLERI = ['[SÜRÜM GÜNÜ TARİHİ]', '[RELEASE DAY DATE]'];
 
+/**
+ * Genel yer tutucu kilidi (2026-10-11): EEA Eki gibi gerçek bilgi bekleyen sayfalar köşeli parantezli
+ * BÜYÜK HARFLİ yer tutucular taşır: `[STREET ADDRESS, POSTCODE, CITY, COUNTRY]`, `[TELEPHONE]`,
+ * `[TAX NUMBER, if any]`, `[EU REPRESENTATIVE: NAME, ADDRESS, EMAIL]`, `[APPLE SAFEGUARD: confirm]` …
+ * Biri doldurulmadan kalırsa build durur. Markdown bağlantı etiketleri (`[Privacy Policy]`,
+ * `[KVKK-Informationstext]`) küçük harf içerdiği için eşleşmez; `[DOLDUR]` gibi unutulmuş yer
+ * tutucular ise yakalanır.
+ */
+const YER_TUTUCU_DESENI = /\[(?=[A-Z]{2,})[A-Z][A-Z \-]+(?:[,:][^\]]*)?\]/g;
+
 /** Konsol raporu için: `>` işaretleri atılmış, tek satıra indirgenmiş ilk ~80 karakter. */
 function alintiOzeti(block) {
   const duz = block.replace(/^>\s?/gm, '').replace(/\s+/g, ' ').trim();
@@ -134,21 +173,45 @@ function mdToHtml(md) {
 }
 
 function nav(currentTip, currentDil) {
-  const tips = {
-    tr: { privacy:'Gizlilik', kvkk:'KVKK Aydınlatma', terms:'Kullanıcı Sözleşmesi', delete:'Hesap Silme' },
-    en: { privacy:'Privacy',  kvkk:'KVKK Notice',     terms:'Terms of Service',      delete:'Account Deletion' }
+  const etiket = {
+    tr: { privacy: 'Gizlilik', kvkk: 'KVKK Aydınlatma', terms: 'Kullanıcı Sözleşmesi', delete: 'Hesap Silme' },
+    en: { privacy: 'Privacy', kvkk: 'KVKK Notice', terms: 'Terms of Service', delete: 'Account Deletion', eea: 'EEA Addendum' },
+    de: { privacy: 'Datenschutz', delete: 'Konto löschen', eea: 'Rechtliche Hinweise (EWR)', kvkk: 'KVKK (EN)', terms: 'Nutzungsbedingungen (EN)' },
+    fr: { privacy: 'Confidentialité', delete: 'Suppression du compte', eea: 'Mentions légales (EEE)', kvkk: 'KVKK (EN)', terms: "Conditions d'utilisation (EN)" },
+    it: { privacy: 'Privacy', delete: 'Eliminazione account', eea: 'Note legali (SEE)', kvkk: 'KVKK (EN)', terms: 'Termini di utilizzo (EN)' },
+    es: { privacy: 'Privacidad', delete: 'Eliminar cuenta', eea: 'Aviso legal (EEE)', kvkk: 'KVKK (EN)', terms: 'Condiciones de uso (EN)' },
   };
-  const items = Object.entries(tips[currentDil]).map(([t, label]) => {
-    if (t === currentTip) return `<a aria-current="page" style="background:var(--accent);color:var(--bg)">${label}</a>`;
-    return `<a href="${t}.html">${label}</a>`;
-  });
-  const langLink = currentDil === 'tr'
-    ? `<a class="lang" href="en/${currentTip}.html">🇬🇧 English</a>`
-    : `<a class="lang" href="../${currentTip}.html">🇹🇷 Türkçe</a>`;
-  const homeLink = currentDil === 'en'
-    ? `<a href="../index.html">⬅ Home</a>`
-    : `<a href="index.html">⬅ Ana sayfa</a>`;
-  return `<nav>${homeLink}${items.join('')}${langLink}</nav>`;
+  const kok = currentDil === 'tr' ? '' : '../';
+  const sira = ['privacy', 'kvkk', 'terms', 'delete', 'eea'];
+  const items = [];
+  for (const t of sira) {
+    if (!etiket[currentDil][t]) continue;
+    if (t === currentTip) {
+      items.push(`<a aria-current="page" style="background:var(--accent);color:var(--bg)">${etiket[currentDil][t]}</a>`);
+    } else if (SAYFA_VAR.has(`${currentDil}/${t}`)) {
+      items.push(`<a href="${t}.html">${etiket[currentDil][t]}</a>`);
+    } else if (CEVRILMEYEN.has(t)) {
+      items.push(`<a href="${kok}en/${t}.html">${etiket[currentDil][t]}</a>`);
+    }
+  }
+  // Dil değiştirici: aynı sayfanın diğer dillerde GERÇEKTEN var olan sürümleri.
+  const langLinks = Object.keys(DILLER)
+    .filter((d) => d !== currentDil && SAYFA_VAR.has(`${d}/${currentTip}`))
+    .map((d) => {
+      const hedef = d === 'tr' ? `${kok}${currentTip}.html` : `${kok}${d}/${currentTip}.html`;
+      return `<a class="lang" href="${hedef}">${DILLER[d].ad}</a>`;
+    });
+  const homeLink = `<a href="${kok}index.html">${DILLER[currentDil].ana}</a>`;
+  return `<nav>${homeLink}${items.join('')}${langLinks.join('')}</nav>`;
+}
+
+/** `<link rel="alternate" hreflang>` — aynı sayfanın var olan dil sürümleri (arama motoru + otomatik dil seçimi). */
+function hreflangEtiketleri(currentTip) {
+  const taban = 'https://victorpain.github.io/mashop-legal';
+  return Object.keys(DILLER)
+    .filter((d) => SAYFA_VAR.has(`${d}/${currentTip}`))
+    .map((d) => `<link rel="alternate" hreflang="${d}" href="${taban}/${d === 'tr' ? '' : d + '/'}${currentTip}.html">`)
+    .join('\n');
 }
 
 /**
@@ -170,13 +233,18 @@ function guncellemeTarihi(ham) {
  * yalanlıyordu; KVKK aydınlatmasında tarih, kullanıcının neyi ne zaman öğrendiğinin kanıtı.
  */
 function footer(dil, commitHash, tarihGosterim) {
-  const etiket = dil === 'tr' ? 'Son güncelleme' : 'Last updated';
+  const etiket = DILLER[dil].guncelleme;
   const tarih = tarihGosterim ? `${etiket}: ${tarihGosterim}` : '';
   const repo  = 'github.com/VictorPain/mashop-legal';
-  const note  = dil === 'tr'
-    ? `Bu sayfa <a href="https://${repo}">${repo}</a> üzerinden yayınlanır. Kaynak: <code>${commitHash}</code>.`
-    : `This page is published from <a href="https://${repo}">${repo}</a>. Source: <code>${commitHash}</code>.`;
-  return `<footer>${tarih ? `${tarih} · ` : ''}${note}</footer>`;
+  const notlar = {
+    tr: `Bu sayfa <a href="https://${repo}">${repo}</a> üzerinden yayınlanır. Kaynak: <code>${commitHash}</code>.`,
+    en: `This page is published from <a href="https://${repo}">${repo}</a>. Source: <code>${commitHash}</code>.`,
+    de: `Diese Seite wird über <a href="https://${repo}">${repo}</a> veröffentlicht. Quelle: <code>${commitHash}</code>.`,
+    fr: `Cette page est publiée depuis <a href="https://${repo}">${repo}</a>. Source : <code>${commitHash}</code>.`,
+    it: `Questa pagina è pubblicata da <a href="https://${repo}">${repo}</a>. Fonte: <code>${commitHash}</code>.`,
+    es: `Esta página se publica desde <a href="https://${repo}">${repo}</a>. Fuente: <code>${commitHash}</code>.`,
+  };
+  return `<footer>${tarih ? `${tarih} · ` : ''}${notlar[dil]}</footer>`;
 }
 
 function sayfa({ tip, dil, title, bodyHtml, tarihGosterim }, commitHash) {
@@ -186,6 +254,7 @@ function sayfa({ tip, dil, title, bodyHtml, tarihGosterim }, commitHash) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
+${hreflangEtiketleri(tip)}
 <style>
 ${STYLE}
 </style>
@@ -231,6 +300,24 @@ ${STYLE}
   <a href="en/delete.html">Account and Data Deletion</a>
 </nav>
 
+<h2>🇩🇪 Deutsch · 🇫🇷 Français · 🇮🇹 Italiano · 🇪🇸 Español</h2>
+<p class="meta">EWR / EEA / EEE / SEE. KVKK / Terms: <a href="en/kvkk.html">English</a>.</p>
+<nav>
+  <a href="en/eea.html">🇬🇧 Legal Notice and EEA Addendum</a>
+  <a href="de/privacy.html">🇩🇪 Datenschutzerklärung</a>
+  <a href="de/eea.html">🇩🇪 Rechtliche Hinweise (EWR)</a>
+  <a href="de/delete.html">🇩🇪 Konto löschen</a>
+  <a href="fr/privacy.html">🇫🇷 Politique de confidentialité</a>
+  <a href="fr/eea.html">🇫🇷 Mentions légales (EEE)</a>
+  <a href="fr/delete.html">🇫🇷 Suppression du compte</a>
+  <a href="it/privacy.html">🇮🇹 Informativa sulla privacy</a>
+  <a href="it/eea.html">🇮🇹 Note legali (SEE)</a>
+  <a href="it/delete.html">🇮🇹 Eliminazione account</a>
+  <a href="es/privacy.html">🇪🇸 Política de privacidad</a>
+  <a href="es/eea.html">🇪🇸 Aviso legal (EEE)</a>
+  <a href="es/delete.html">🇪🇸 Eliminar cuenta</a>
+</nav>
+
 <h2>İletişim / Contact</h2>
 <p>Gizlilik, veri talepleri ve hukuki sorularınız için / For privacy, data requests and legal questions:<br>
 <strong>fatihaci79@gmail.com</strong></p>
@@ -265,10 +352,14 @@ try {
       for (const desen of YAYIN_KILIDI_DESENLERI) {
         if (satir.includes(desen)) bulgular.push({ src: p.src, satir: i + 1, desen, metin: satir.trim() });
       }
+      for (const eslesme of satir.matchAll(YER_TUTUCU_DESENI)) {
+        if (YAYIN_KILIDI_DESENLERI.includes(eslesme[0])) continue; // zaten yukarıda raporlandı
+        bulgular.push({ src: p.src, satir: i + 1, desen: eslesme[0], metin: satir.trim() });
+      }
     });
   }
   if (bulgular.length > 0) {
-    console.error('\n⛔ YAYIN KİLİDİ: kaynak metinlerde doldurulmamış tarih yer tutucusu var.');
+    console.error('\n⛔ YAYIN KİLİDİ: kaynak metinlerde doldurulmamış yer tutucu (tarih / adres / temsilci …) var.');
     console.error('   Hiçbir dosya yazılmadı. Yer tutucular yalnızca mobil sürüm mağazada');
     console.error('   GÖRÜNÜR olduğu gün gerçek tarihle değiştirilir (bkz. YAYIN_KILIDI_DESENLERI).\n');
     for (const b of bulgular) {
@@ -280,8 +371,11 @@ try {
   }
 }
 
-const enDir = resolve(__dirname, 'en');
-if (!existsSync(enDir)) mkdirSync(enDir, { recursive: true });
+for (const d of Object.keys(DILLER)) {
+  if (d === 'tr') continue;
+  const dizin = resolve(__dirname, d);
+  if (!existsSync(dizin)) mkdirSync(dizin, { recursive: true });
+}
 
 let enYeniIso = null;
 let enYeniGosterim = null;
@@ -298,7 +392,11 @@ for (const p of PAGES) {
     enYeniGosterim = tarih.gosterim;
   }
   const { md, tutulan, atilan } = temizle(ham);
-  const bodyHtml = mdToHtml(md);
+  let bodyHtml = mdToHtml(md);
+  // DE/FR/IT/ES'te KVKK ve Kullanıcı Sözleşmesi çevrilmez → bu klasörlerdeki göreli bağlantılar İngilizce sürüme gider.
+  if (!['tr', 'en'].includes(p.dil)) {
+    bodyHtml = bodyHtml.replace(/href="(kvkk|terms)\.html"/g, 'href="../en/$1.html"');
+  }
   const html = sayfa({ ...p, bodyHtml, tarihGosterim: tarih?.gosterim ?? null }, commitHash);
   writeFileSync(resolve(__dirname, p.out), html);
   console.log(`✓ ${p.out} (${html.length} char, guncelleme ${tarih?.gosterim ?? 'YOK'})`);
