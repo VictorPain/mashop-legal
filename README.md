@@ -8,15 +8,13 @@ maShop mobil uygulamasının gizlilik politikası, KVKK aydınlatma metni ve kul
 
 ```
 mashop-legal/
-├── index.html          → TR + EN ana sayfa (link listesi)
-├── privacy.html        → Gizlilik Politikası (TR)
-├── kvkk.html           → KVKK Aydınlatma Metni (TR)
-├── terms.html          → Kullanıcı Sözleşmesi (TR)
-├── en/
-│   ├── privacy.html    → Privacy Policy (EN)
-│   ├── kvkk.html       → Personal Data Notice (EN)
-│   └── terms.html      → Terms of Service (EN)
-├── build.mjs           → Wiki markdown → HTML build script
+├── index.html          → ana sayfa (6 dil bölümü)
+├── privacy.html · kvkk.html · terms.html · delete.html   → TR
+├── en/   privacy · kvkk · terms · delete · eea           → EN (+ AB/AEA Eki)
+├── de/ fr/ it/ es/   privacy · delete · eea              → DE/FR/IT/ES
+│                       (KVKK ve sözleşme çevrilmez → ../en/ sürümüne bağlanır)
+├── build.mjs           → Wiki markdown → HTML (22 sayfa); yer tutucu kilidi
+├── yayin-gunu.py       → Yayın günü: tarih yer tutucularını doldurur
 └── README.md
 ```
 
@@ -42,10 +40,19 @@ Wiki metinlerinde değişiklik yapıldıktan sonra:
 
 ```bash
 cd mashop-legal
-node build.mjs               # 7 HTML üret (index + 3 TR + 3 EN)
+node build.mjs               # 22 HTML üret
 git add -A
 git commit -m "rebuild: <kısa açıklama>"
 git push                     # GitHub Pages otomatik build (~1 dk)
+```
+
+⛔ **Yayın kilidi:** kaynaklarda doldurulmamış yer tutucu (`[SÜRÜM GÜNÜ TARİHİ]`, `[RELEASE DAY DATE]` ya da genel `[BÜYÜK HARFLİ]` yer tutucu) varsa build **hiçbir dosya yazmadan** durur.
+
+**Yayın günü (mobil sürüm mağazada görünür olduğu gün):**
+
+```bash
+python3 yayin-gunu.py 2026-10-20   # tarihi yer tutuculara + front-matter'a işler
+node build.mjs
 ```
 
 ## Bağımlılık
