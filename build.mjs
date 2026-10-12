@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const WIKI = resolve(__dirname, '../sanalFatih/wiki/projeler/mashop/monetizasyon/yasal');
 
-const PAGES = [
+const TUM_SAYFALAR = [
   { tip: 'privacy', dil: 'tr', src: 'privacy-policy-tr.md',         title: 'maShop — Gizlilik Politikası',   out: 'privacy.html' },
   { tip: 'kvkk',    dil: 'tr', src: 'kvkk-aydinlatma-metni.md',     title: 'maShop — KVKK Aydınlatma Metni', out: 'kvkk.html' },
   { tip: 'terms',   dil: 'tr', src: 'kullanici-sozlesmesi.md',      title: 'maShop — Kullanıcı Sözleşmesi',  out: 'terms.html' },
@@ -38,6 +38,21 @@ const PAGES = [
   { tip: 'delete',  dil: 'es', src: 'hesap-silme-es.md',            title: 'maShop — Eliminación de cuenta y datos',            out: 'es/delete.html' },
   { tip: 'eea',     dil: 'es', src: 'eea-ek-es.md',                 title: 'maShop — Aviso legal y adenda EEE',                 out: 'es/eea.html' },
 ];
+
+/**
+ * B kapsamı (Fatih kararı 2026-10-12): yalnız TR + EN'in 4 sayfası (privacy · kvkk · terms · delete)
+ * yayımlanır. AB/AEA Eki (en/eea) ile DE/FR/IT/ES sayfaları AB açılışına kalır — derlenmez, yayımlanmaz.
+ * PAGES, SAYFA_VAR (nav + dil değiştirici + hreflang), yayın kilidi ve dil klasörleri bu daraltılmış
+ * listeden türer → yayımlanmayan sayfalara bağlantı ÜRETİLMEZ (404 olurdu); index.html da yazılmaz
+ * (şablonu DE/FR/IT/ES/EEA'ya bağlanır; yayındaki index korunur).
+ * ⚠️ AB AÇILIŞINDA KALDIRILACAK: `AB_ACILISI = true` yap (ya da süzgeci sil) → 22 sayfa + index.
+ */
+const AB_ACILISI = false;
+const YAYIN_DILLERI = ['tr', 'en'];
+const YAYIN_DISI_TIPLER = ['eea'];
+const PAGES = AB_ACILISI
+  ? TUM_SAYFALAR
+  : TUM_SAYFALAR.filter((p) => YAYIN_DILLERI.includes(p.dil) && !YAYIN_DISI_TIPLER.includes(p.tip));
 
 /** Hangi dilde hangi sayfa var → dil değiştirici ve nav yalnız GERÇEKTEN var olan sayfalara bağlanır. */
 const SAYFA_VAR = new Set(PAGES.map((p) => `${p.dil}/${p.tip}`));
@@ -371,7 +386,8 @@ try {
   }
 }
 
-for (const d of Object.keys(DILLER)) {
+// Yalnız derlenen dillerin klasörleri açılır (B kapsamında de/ fr/ it/ es/ oluşmaz).
+for (const d of new Set(PAGES.map((p) => p.dil))) {
   if (d === 'tr') continue;
   const dizin = resolve(__dirname, d);
   if (!existsSync(dizin)) mkdirSync(dizin, { recursive: true });
@@ -405,6 +421,10 @@ for (const p of PAGES) {
   for (const ozet of atilan) console.log(`    alıntı ATILDI  : ${ozet}`);
 }
 
-writeFileSync(resolve(__dirname, 'index.html'), indexHtml(commitHash, enYeniGosterim));
-console.log(`✓ index.html`);
+if (AB_ACILISI) {
+  writeFileSync(resolve(__dirname, 'index.html'), indexHtml(commitHash, enYeniGosterim));
+  console.log(`✓ index.html`);
+} else {
+  console.log('– index.html YAZILMADI (B kapsamı: şablon DE/FR/IT/ES/EEA sayfalarına bağlanır; yayındaki index korunur)');
+}
 console.log('\nTamam. Yayın için: git add -A && git commit -m "rebuild" && git push');
